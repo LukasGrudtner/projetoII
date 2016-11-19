@@ -1,0 +1,44 @@
+1. Criar um arquivo "manpages.dat" com um "registro" para cada manpage, onde cada "registro" contém:
+	* Comando (nome), comando[];
+	* Conteúdo (todos os caracteres do registro), conteudo[];
+	Obs.: O comando[] terá o número de bytes (caracteres) do maior nome de comando presente na manpage.
+	      O conteúdo[] terá o número de bytes (caracteres) igual ao maior conteúdo presente na manpage.
+
+2. O software desenvolvido deverá ser capaz de realizar as seguintes buscas:
+	* Por "chave primária", retornando o "conteúdo" do "registro" da MANPAGE para determinado "nome-de-comando".
+	  Caso esse comando não esteja em nenhum "registro", deverá ser retornado uma mensagem que a MANPAGE com aquele nome não existe.
+	* Por "chave secundária", retornando todas as MANPAGES que contém uma determinada "chave secundária".
+	  Ex.: Retornar o "número do registro" (MANPAGE) que contém a palavra "filename" dentro do "conteúdo".
+	* Busca "conjuntiva" com "duas chaves secundárias", retornando todos os "registros" (MANPAGES) que contenham ambas as chaves
+	  no "conteúdo". Ex.: filename e string.
+
+	### INDEXAÇÃO ###
+
+3. Manter um "índice primário" em "arquivo separado" e que referência os registros (MANPAGES) por "comando"(nome). Ex.: fseek.
+	* Este índice deve ser uma árvore B.
+	* A chave primária será uma string, o que significa que deverá ser calculado a precedência entre strings. Ex.: Saber se fclose
+	  vem antes ou depois de fseek. (comparar com os elementos do vetor string[])
+
+4. Manter um conjunto de índices de "chave secundária" na forma de "arquivo invertido".
+	* Este índice indexará o conjunto de todas as palavras contidas em todos os "registros"(MANPAGES) que não caiam nas categorias
+	  léxicas: artigo, conjunção, preposição e pronome (chamadas de conectivos).
+
+	* Preposições: in, on, at.
+	* Conjunções: and, but, or, so, although, because, for, if, since, either, neither.
+	* Pronomes: I, you, he, she, it, we, you, they, me, you, him, her, it, us, you, them, my, your, his, her, its, out, your, their,
+		    mine, yours, his, hers, its, ours, yours, theirs, somebody, someone, something, somewhere, nobody, no one, nothing,
+		    nowhere, who, which, that, this, these, that, those.
+	* Artigos: the, an, a.
+
+5. Você deverá percorrer todas as MANPAGES (o que pode ser durante a inclusão de uma MANPAGE no arquivo de dados) e:
+	* Incluir no "índice invertido toda palavra que ainda não estiver nele.
+	* Criar uma entrada para as palavras que já estiverem indexadas.
+
+	### ENTRADA DE DADOS ###
+
+6. A entrada dos dados deverá ser realizada da seguinte forma: 
+	* Cada arquivo-texto de uma MANPAGE é lido e armazenado em um "registro", cujo endereço é guardado.
+	* Percorre-se o texto (na memória) palavra a palavra e verifica-se, para cada palavra, se ela se encontra na lista de
+	  palavras-chave.
+	* Para cada palavra-chave encontrada, atualiza-se uma lista de endereços de "chave secundária" com o endereço do registro.
+	* Finalmente, o "índice de chave primária" é alimentado.

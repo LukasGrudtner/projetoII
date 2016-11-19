@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1479588486 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/main.cpp
+	<iostream>
+	"linked_list.h"
+
+1479588550 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/linked_list.h
+	<string>
+	<stdexcept>
+
+1479588420 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/linked_list.cpp
+	"linked_list.h"
+
+1479583171 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/manpage.cpp
+	"manpage.h"
+
+1479588154 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/manpage.h
+
+1479588369 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/teste.cpp
+	"teste.h"
+
+1479588368 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/teste.h
+
