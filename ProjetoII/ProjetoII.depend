@@ -1,14 +1,16 @@
 # depslib dependency file v1.0
-1479599804 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/main.cpp
+1479602918 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/main.cpp
 	<iostream>
 	"linked_list.h"
+	"secondary_indexing.h"
 
-1479599924 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/linked_list.h
+1479602601 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/linked_list.h
 	<string>
 	<stdexcept>
 
-1479599690 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/linked_list.cpp
+1479603249 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/linked_list.cpp
 	"linked_list.h"
+	<iostream>
 
 1479583171 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/manpage.cpp
 	"manpage.h"
@@ -26,4 +28,15 @@
 
 1479590989 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/node.cpp
 	"node.h"
+
+1479600144 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/control.cpp
+	"control.h"
+
+1479600679 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/control.h
+
+1479602316 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/secondary_indexing.cpp
+	"secondary_indexing.h"
+
+1479601777 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/secondary_indexing.h
+	"linked_list.h"
 

@@ -1,4 +1,5 @@
 #include "linked_list.h"
+#include <iostream>
 
 LinkedList::LinkedList()
 {
@@ -26,7 +27,31 @@ void LinkedList::push_back(const string& data, LinkedList* regAdress)
 
 void LinkedList::push_back(const string& data)
 {
-    insert(data, size());
+    Node* atual;
+    Node* novo;
+
+    if (novo == NULL) {
+        throw std::out_of_range("Erro Lista Cheia!");
+    } else {
+        if(size() == 0) {
+            novo = new Node(data);
+            novo->setQuantidade();
+            head->next(novo);
+            size_++;
+        } else {
+            atual = head->next();
+            while (atual->data() != data && atual->next() != nullptr) {
+                atual = atual->next();
+            }
+            if (atual->data() == data) {
+                atual->setQuantidade();
+            } else {
+                novo = new Node(data);
+                novo->setQuantidade();
+                atual->next(novo);
+            }
+        }
+    }
 }
 
 void LinkedList::push_front(const string& data, LinkedList* regAdress)
@@ -288,4 +313,16 @@ LinkedList* LinkedList::find(const string& data) const
 std::size_t LinkedList::size() const
 {
     return size_;
+}
+
+std::size_t LinkedList::getQuantidadeNode(const string& data) const
+{
+    auto i = 0u;
+    Node* anterior = head->next();
+
+    while (anterior->data() != data && i < size()) {
+        ++i;
+        anterior = anterior->next();
+    }
+    return anterior->getQuantidade();
 }

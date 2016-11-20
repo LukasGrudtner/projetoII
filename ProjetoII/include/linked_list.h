@@ -27,6 +27,7 @@ class LinkedList
         bool empty() const;
         bool contains(const string& data) const;
         LinkedList* find(const string& data) const;
+        std::size_t getQuantidadeNode(const string& data) const;
         std::size_t size() const;
 
     protected:
