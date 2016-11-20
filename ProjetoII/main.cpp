@@ -6,7 +6,10 @@ using namespace std;
 int main()
 {
     cout << "Hello world!" << endl;
-    LinkedList* list = new LinkedList();
-    list->push_back("lukas");
-    cout << list->contains("lukas");
+    LinkedList* indexKeys = new LinkedList();
+    LinkedList* registerAdress = new LinkedList();
+
+
+
+
 }

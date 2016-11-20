@@ -12,10 +12,13 @@ class LinkedList
         LinkedList();
         virtual ~LinkedList();
         void clear();
+        void push_back(const string& data, LinkedList* regAdress);
         void push_back(const string& data);
+        void push_front(const string& data, LinkedList* regAdress);
         void push_front(const string& data);
+        void insert(const string& data, std::size_t index, LinkedList* regAdress);
         void insert(const string& data, std::size_t index);
-        void insert_sorted(const string& data);
+        void insert_sorted(const string& data, LinkedList* regAdress);
         string& at(std::size_t index);
         string pop(std::size_t index);
         string pop_back();
@@ -23,7 +26,7 @@ class LinkedList
         void remove(const string& data);
         bool empty() const;
         bool contains(const string& data) const;
-        std::size_t find(const string& data) const;
+        LinkedList* find(const string& data) const;
         std::size_t size() const;
 
     protected:
@@ -47,9 +50,9 @@ class LinkedList
                 /param data dado a ser inserido no Node.
                 /param next ponteiro para o próximo Node.
             */
-            Node(const string& data, Node* next):
+            Node(const string& data, LinkedList* lista):
                 data_{data},
-                next_{next}
+                lista_{lista}
             {}
 
             //! Data
@@ -97,7 +100,7 @@ class LinkedList
             }
 
             void setLista(LinkedList* list) {
-              //  lista_ = list;
+                lista_ = list;
             }
 
             LinkedList* getLista() {

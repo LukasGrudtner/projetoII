@@ -19,9 +19,33 @@ void LinkedList::clear()
     }
 }
 
+void LinkedList::push_back(const string& data, LinkedList* regAdress)
+{
+    insert(data, size(), regAdress);
+}
+
 void LinkedList::push_back(const string& data)
 {
     insert(data, size());
+}
+
+void LinkedList::push_front(const string& data, LinkedList* regAdress)
+{
+    Node* novo;
+    novo = new Node(data, regAdress);
+
+    if (novo == NULL) {
+        throw std::out_of_range("Erro Lista Cheia!");
+    } else {
+        if(size() == 0) {
+            head->next(novo);
+            size_++;
+        } else {
+            novo->next(head->next());
+            head->next(novo);
+            size_++;
+        }
+    }
 }
 
 void LinkedList::push_front(const string& data)
@@ -39,6 +63,38 @@ void LinkedList::push_front(const string& data)
             novo->next(head->next());
             head->next(novo);
             size_++;
+        }
+    }
+}
+
+void LinkedList::insert(const string& data, std::size_t index, LinkedList* regAdress)
+{
+    Node *novo;
+    Node *anterior;
+
+    if (index < 0 || index > size_) {
+        throw std::out_of_range("Erro Posição!");
+    } else {
+
+        if (index == 0) {
+            push_front(data, regAdress);
+        } else {
+            novo = new Node(data, regAdress);
+
+            if (novo == NULL) {
+                throw std::out_of_range("Erro Lista Cheia!");
+
+            } else {
+                anterior = head->next();
+
+                for (auto i = 0u; i < index - 1; ++i) {
+                    anterior = anterior->next();
+                }
+
+                novo->next(anterior->next());
+                anterior->next(novo);
+                size_++;
+            }
         }
     }
 }
@@ -75,13 +131,13 @@ void LinkedList::insert(const string& data, std::size_t index)
     }
 }
 
-void LinkedList::insert_sorted(const string& data)
+void LinkedList::insert_sorted(const string& data, LinkedList* regAdress)
 {
     Node* atual;
     auto posicao = 0;
 
     if (empty()) {
-        push_front(data);
+        push_front(data, regAdress);
     } else {
         atual = head->next();
 
@@ -91,9 +147,9 @@ void LinkedList::insert_sorted(const string& data)
         }
 
         if (data > atual->data()) {
-            insert(data, posicao+1);
+            insert(data, posicao+1, regAdress);
         } else {
-            insert(data, posicao);
+            insert(data, posicao, regAdress);
         }
     }
 }
@@ -215,7 +271,7 @@ bool LinkedList::contains(const string& data) const
     return false;
 }
 
-std::size_t LinkedList::find(const string& data) const
+LinkedList* LinkedList::find(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -226,7 +282,7 @@ std::size_t LinkedList::find(const string& data) const
         if (i < size())
             anterior = anterior->next();
     }
-    return i;
+    return anterior->getLista();
 }
 
 std::size_t LinkedList::size() const
