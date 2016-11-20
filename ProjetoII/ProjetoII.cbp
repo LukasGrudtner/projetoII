@@ -5,6 +5,7 @@
 		<Option title="ProjetoII" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
+		<Option virtualFolders="structures/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/ProjetoII" prefix_auto="1" extension_auto="1" />
@@ -34,15 +35,19 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/linked_list.h" />
+		<Unit filename="include/control.h" />
+		<Unit filename="include/linked_list.h">
+			<Option virtualFolder="structures/" />
+		</Unit>
 		<Unit filename="include/manpage.h" />
-		<Unit filename="include/node.h" />
-		<Unit filename="include/teste.h" />
+		<Unit filename="include/secondary_indexing.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/linked_list.cpp" />
+		<Unit filename="src/control.cpp" />
+		<Unit filename="src/linked_list.cpp">
+			<Option virtualFolder="structures/" />
+		</Unit>
 		<Unit filename="src/manpage.cpp" />
-		<Unit filename="src/node.cpp" />
-		<Unit filename="src/teste.cpp" />
+		<Unit filename="src/secondary_indexing.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

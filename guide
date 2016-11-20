@@ -42,3 +42,12 @@
 	  palavras-chave.
 	* Para cada palavra-chave encontrada, atualiza-se uma lista de endereços de "chave secundária" com o endereço do registro.
 	* Finalmente, o "índice de chave primária" é alimentado.
+
+	### PRÉ-PESQUISA ###
+
+1. Manter a estrutura de dados de indexação secundária em um arquivo "second.dat" onde irá armazenar:
+	* Chave (na primeira linha)
+	* Todos os registros com essa chave (na segunda linha, separados por um espaço)
+
+	OBS.: Na hora da pesquisa, será necessário verificar a primeira linha para ver se fecha com a chave procurada, caso não,
+	avança-se a próxima linha e verifica a seguinte, caso chegue no final, conclue-se que a chave não existe no disco.

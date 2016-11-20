@@ -15,7 +15,11 @@ class SecondaryIndexing
         // Retorna a chave com o parametro nome
         LinkedList* findIndexKey(string name);
 
+        // Adiciona um registro
         void addRegister(string data, string indexKey);
+
+
+
 
     protected:
 
