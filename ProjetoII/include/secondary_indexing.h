@@ -2,6 +2,7 @@
 #define SECONDARYINDEXING_H
 
 #include "linked_list.h"
+#include <iostream>
 
 class SecondaryIndexing
 {
@@ -17,6 +18,11 @@ class SecondaryIndexing
 
         // Adiciona um registro
         void addRegister(string data, string indexKey);
+
+        // Verifica se a chave já foi adicionada
+        bool verificaExistenciaDeChave(string word);
+
+        void mostraChaves();
 
 
 

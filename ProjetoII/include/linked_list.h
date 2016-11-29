@@ -28,6 +28,7 @@ class LinkedList
         bool contains(const string& data) const;
         LinkedList* find(const string& data) const;
         std::size_t getQuantidadeNode(const string& data) const;
+        void incQuantidadeNode(const string& data);
         std::size_t size() const;
 
     protected:
@@ -96,7 +97,7 @@ class LinkedList
                 next_ = node;
             }
 
-            void setQuantidade() {
+            void incQuantidade() {
                 quantidade_++;
             }
 

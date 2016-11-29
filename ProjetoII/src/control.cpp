@@ -2,7 +2,10 @@
 
 Control::Control()
 {
-    //ctor
+    secondIndex = new SecondaryIndexing();
+    reader = new Reader(secondIndex);
+
+    secondIndex->mostraChaves();
 }
 
 Control::~Control()

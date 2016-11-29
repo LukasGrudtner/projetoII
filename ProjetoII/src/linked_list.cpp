@@ -35,7 +35,7 @@ void LinkedList::push_back(const string& data)
     } else {
         if(size() == 0) {
             novo = new Node(data);
-            novo->setQuantidade();
+            novo->incQuantidade();
             head->next(novo);
             size_++;
         } else {
@@ -44,10 +44,10 @@ void LinkedList::push_back(const string& data)
                 atual = atual->next();
             }
             if (atual->data() == data) {
-                atual->setQuantidade();
+                atual->incQuantidade();
             } else {
                 novo = new Node(data);
-                novo->setQuantidade();
+                novo->incQuantidade();
                 atual->next(novo);
             }
         }
@@ -65,9 +65,11 @@ void LinkedList::push_front(const string& data, LinkedList* regAdress)
         if(size() == 0) {
             head->next(novo);
             size_++;
+            novo->incQuantidade();
         } else {
             novo->next(head->next());
             head->next(novo);
+            novo->incQuantidade();
             size_++;
         }
     }
@@ -83,10 +85,12 @@ void LinkedList::push_front(const string& data)
     } else {
         if(size() == 0) {
             head->next(novo);
+            novo->incQuantidade();
             size_++;
         } else {
             novo->next(head->next());
             head->next(novo);
+            novo->incQuantidade();
             size_++;
         }
     }
@@ -118,6 +122,7 @@ void LinkedList::insert(const string& data, std::size_t index, LinkedList* regAd
 
                 novo->next(anterior->next());
                 anterior->next(novo);
+                novo->incQuantidade();
                 size_++;
             }
         }
@@ -150,6 +155,7 @@ void LinkedList::insert(const string& data, std::size_t index)
 
                 novo->next(anterior->next());
                 anterior->next(novo);
+                novo->incQuantidade();
                 size_++;
             }
         }
@@ -325,4 +331,16 @@ std::size_t LinkedList::getQuantidadeNode(const string& data) const
         anterior = anterior->next();
     }
     return anterior->getQuantidade();
+}
+
+void LinkedList::incQuantidadeNode(const string& data)
+{
+    auto i = 0u;
+    Node* anterior = head->next();
+
+    while (anterior->data() != data && i < size()) {
+        ++i;
+        anterior = anterior->next();
+    }
+    anterior->incQuantidade();
 }

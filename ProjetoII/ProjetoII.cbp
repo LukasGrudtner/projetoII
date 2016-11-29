@@ -5,7 +5,7 @@
 		<Option title="ProjetoII" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="structures/;" />
+		<Option virtualFolders="structures/;control/;index/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/ProjetoII" prefix_auto="1" extension_auto="1" />
@@ -35,19 +35,33 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/control.h" />
+		<Unit filename="include/control.h">
+			<Option virtualFolder="control/" />
+		</Unit>
 		<Unit filename="include/linked_list.h">
 			<Option virtualFolder="structures/" />
 		</Unit>
 		<Unit filename="include/manpage.h" />
-		<Unit filename="include/secondary_indexing.h" />
+		<Unit filename="include/reader.h">
+			<Option virtualFolder="control/" />
+		</Unit>
+		<Unit filename="include/secondary_indexing.h">
+			<Option virtualFolder="index/" />
+		</Unit>
 		<Unit filename="main.cpp" />
-		<Unit filename="src/control.cpp" />
+		<Unit filename="src/control.cpp">
+			<Option virtualFolder="control/" />
+		</Unit>
 		<Unit filename="src/linked_list.cpp">
 			<Option virtualFolder="structures/" />
 		</Unit>
 		<Unit filename="src/manpage.cpp" />
-		<Unit filename="src/secondary_indexing.cpp" />
+		<Unit filename="src/reader.cpp">
+			<Option virtualFolder="control/" />
+		</Unit>
+		<Unit filename="src/secondary_indexing.cpp">
+			<Option virtualFolder="index/" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger />
