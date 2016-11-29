@@ -30,6 +30,7 @@ class IndexList
         std::size_t getQuantidadeNode(const string& data) const;
         void incQuantidadeNode(const string& data);
         std::size_t size() const;
+        void printaTodosOsElementos();
 
     protected:
 

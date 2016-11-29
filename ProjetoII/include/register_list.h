@@ -26,6 +26,7 @@ class RegisterList
         void incQuantidadeNode(const int& data);
         void setQuantidadeNode(const int& data);
         std::size_t size() const;
+        void printaTodosOsElementos();
 
     protected:
 

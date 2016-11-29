@@ -248,3 +248,13 @@ void RegisterList::incQuantidadeNode(const int& data)
     }
     anterior->incQuantidade();
 }
+
+void RegisterList::printaTodosOsElementos()
+{
+    Node* atual = head->next();
+
+    while (atual->next() != nullptr) {
+        cout << "[" << atual->data() << "]: " << atual->getQuantidade() << " ";
+        atual = atual->next();
+    }
+}

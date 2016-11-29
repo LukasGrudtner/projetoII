@@ -306,7 +306,7 @@ std::size_t IndexList::getQuantidadeNode(const string& data) const
 }
 
 void IndexList::incQuantidadeNode(const string& data)
-{cout << "2"<< endl;
+{
     auto i = 0u;
     Node* anterior = head->next();
 
@@ -315,5 +315,18 @@ void IndexList::incQuantidadeNode(const string& data)
         anterior = anterior->next();
     }
     anterior->incQuantidade();
+}
+
+void IndexList::printaTodosOsElementos()
+{
+    Node* atual = head->next();
+
+    while (atual->next() != nullptr) {
+        cout << "= " << atual->data() << " | " << atual->getQuantidade() << " =" << endl;
+        atual->getLista()->printaTodosOsElementos();
+        atual = atual->next();
+        cout << endl << endl;
+    }
+
 }
 

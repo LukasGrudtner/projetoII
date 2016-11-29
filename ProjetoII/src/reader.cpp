@@ -30,9 +30,9 @@ void Reader::insertSecondaryKeys()
         getline(file, word);
         if (word[0] != '\0') {
             if (secondIndex->addIndexKey(word)) {
-                cout << "===== InsertRegisters =====: " << word << endl;
+                //cout << "===== InsertRegisters =====: " << word << endl;
                 insertRegisters(word);
-                cout << "===== InsertRegisters =====: " << word << endl;
+                //cout << "===== InsertRegisters =====: " << word << endl;
             }
         }
     }
@@ -57,12 +57,12 @@ void Reader::insertRegisters(string pivo)
     struct manpage registro;
 
 
-    for (int i = 0; i < 2; i++) {
-        cout << "numRegistro: " << numRegistro << endl;
-        file.seekg(139767*i);
+    while (!file.eof()) {
+        //cout << "numRegistro: " << numRegistro << endl;
+        file.seekg(139767*numRegistro);
         file.read((char *) &registro, sizeof(struct manpage));
         name = registro.name;
-        cout << "NAME: " << name << endl;
+        //cout << "NAME: " << name << endl;
         contents = registro.contents;
 
         posicaoName = 0;
@@ -70,7 +70,7 @@ void Reader::insertRegisters(string pivo)
             posicaoName = name.find(pivo);
             if (posicaoName != -1) {
                 counter++;
-                name[posicaoName+1] = 'c';
+                name[posicaoName] = 'c';
             }
         }
 
@@ -78,7 +78,7 @@ void Reader::insertRegisters(string pivo)
         posicaoContents = 0;
         while (posicaoContents != -1) {
             posicaoContents = contents.find(pivo);
-            cout << "posicaoContents: " << posicaoContents << endl;
+            //cout << "posicaoContents: " << posicaoContents << endl;
             if (posicaoContents != -1) {
                 counter++;
                 contents[posicaoContents] = 'c';
@@ -86,9 +86,8 @@ void Reader::insertRegisters(string pivo)
             }
         }
 
-        cout << "Counter: " << counter << endl;
-        //secondIndex->addRegister(numRegistro, pivo, counter);
-        //numRegistro++;
+        secondIndex->addRegister(numRegistro, pivo, counter);
+        numRegistro++;
 
     }
     file.close();

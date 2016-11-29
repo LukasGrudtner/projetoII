@@ -12,14 +12,12 @@ SecondaryIndexing::~SecondaryIndexing()
 
 bool SecondaryIndexing::addIndexKey(string name)
 {
-cout << "addIndexKey" << endl;
     if (!verificaExistenciaDeChave(name)) {
         RegisterList* registerAdress = new RegisterList();
         indexKeys->push_back(name, registerAdress);
         return true;
     } else {
         indexKeys->incQuantidadeNode(name);
-        cout << "IndexKey REPETIDA" << endl;
         return false;
     }
 }
@@ -41,11 +39,6 @@ bool SecondaryIndexing::verificaExistenciaDeChave(string word)
 
 void SecondaryIndexing::mostraChaves()
 {
-    std::cout << "um: "<< indexKeys->getQuantidadeNode("um") << endl;
-    std::cout << "dois: "<< indexKeys->getQuantidadeNode("dois") << endl;
-    std::cout << "três: "<< indexKeys->getQuantidadeNode("três") << endl;
-    std::cout << "sete: "<< indexKeys->getQuantidadeNode("sete") << endl;
-    std::cout << "vinte: "<< indexKeys->getQuantidadeNode("vinte") << endl;
-    std::cout << "e: "<< indexKeys->getQuantidadeNode("e") << endl;
-
+    /* Listar todos os elementos da IndexList, assim como todos os elementos da RegisterList para cada índice */
+    indexKeys->printaTodosOsElementos();
 }
