@@ -38,20 +38,28 @@
 	"reader.h"
 	<iostream>
 
-1480436275 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/secondary_indexing.cpp
+1480438127 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/secondary_indexing.cpp
 	"secondary_indexing.h"
 
-1480436275 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/secondary_indexing.h
+1480437007 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/secondary_indexing.h
 	"linked_list.h"
 	<iostream>
 
-1480433133 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/reader.h
+1480438152 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/reader.h
 	<string.h>
 	<fstream>
 	<iostream>
 	<stdio.h>
 	"secondary_indexing.h"
 
-1480435573 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/reader.cpp
+1480440650 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/reader.cpp
 	"reader.h"
+	<stdio.h>
+	<string.h>
+	<fstream>
+	<iostream>
+	<sstream>
+	<iomanip>
+	<stdlib.h>
+	<string>
 

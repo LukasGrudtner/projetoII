@@ -14,6 +14,7 @@ class Reader
         Reader(SecondaryIndexing* indiceSecundario);
         virtual ~Reader();
         void insertSecondaryKeys();
+        void insertRegisters(string pivo);
 
     protected:
 

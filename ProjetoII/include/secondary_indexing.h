@@ -11,7 +11,8 @@ class SecondaryIndexing
         virtual ~SecondaryIndexing();
 
         // Adiciona chaves com o paramatro nome, e cria um endereço de registro para essa chave
-        void addIndexKey(string name);
+        // E retorna true caso a palavra não estiver na lista e false se a palavra for repetida
+        bool addIndexKey(string name);
 
         // Retorna a chave com o parametro nome
         LinkedList* findIndexKey(string name);

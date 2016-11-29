@@ -10,15 +10,15 @@ SecondaryIndexing::~SecondaryIndexing()
     //dtor
 }
 
-void SecondaryIndexing::addIndexKey(string name)
+bool SecondaryIndexing::addIndexKey(string name)
 {
     if (!verificaExistenciaDeChave(name)) {
         LinkedList* registerAdress = new LinkedList();
         indexKeys->push_back(name, registerAdress);
-        std::cout << "Não repetida: " << name << std::endl;
+        return true;
     } else {
         indexKeys->incQuantidadeNode(name);
-        std::cout << "Repetida: " << name << std::endl;
+        return false;
     }
 }
 
