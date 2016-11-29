@@ -30,6 +30,8 @@ class IndexList
         std::size_t getQuantidadeNode(const string& data) const;
         void incQuantidadeNode(const string& data);
         std::size_t size() const;
+        string getWriteData();
+        std::size_t getWriteQtde();
         void printaTodosOsElementos();
 
     protected:
@@ -127,6 +129,7 @@ class IndexList
 
     Node* head{nullptr}; /**< Declaração da cabeça da lista. */
     std::size_t size_{0u}; /**< Declaração do tamanho da lista. */
+    Node* write;
 
 };
 

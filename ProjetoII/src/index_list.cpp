@@ -6,6 +6,7 @@ IndexList::IndexList()
 {
     size_ = 0;
     head = new Node();
+    write = head;
 }
 
 IndexList::~IndexList()
@@ -330,3 +331,13 @@ void IndexList::printaTodosOsElementos()
 
 }
 
+string IndexList::getWriteData()
+{
+    write = write->next();
+    return write->data();
+}
+
+std::size_t IndexList::getWriteQtde()
+{
+    return write->getQuantidade();
+}

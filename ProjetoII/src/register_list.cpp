@@ -5,6 +5,7 @@ RegisterList::RegisterList()
 {
     size_ = 0;
     head = new Node();
+    write = head;
 }
 
 RegisterList::~RegisterList()
@@ -258,3 +259,15 @@ void RegisterList::printaTodosOsElementos()
         atual = atual->next();
     }
 }
+
+int RegisterList::getWriteData()
+{
+    write = write->next();
+    return write->data();
+}
+
+std::size_t RegisterList::getWriteQtde()
+{
+    return write->getQuantidade();
+}
+

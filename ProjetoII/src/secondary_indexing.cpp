@@ -1,8 +1,8 @@
 #include "secondary_indexing.h"
 
-SecondaryIndexing::SecondaryIndexing()
+SecondaryIndexing::SecondaryIndexing(IndexList* index)
 {
-
+    indexKeys = index;
 }
 
 SecondaryIndexing::~SecondaryIndexing()
@@ -43,3 +43,5 @@ void SecondaryIndexing::mostraChaves()
 
     indexKeys->printaTodosOsElementos();
 }
+
+

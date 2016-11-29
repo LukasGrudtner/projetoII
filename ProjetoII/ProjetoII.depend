@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1480448364 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/main.cpp
+1480458356 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/main.cpp
 	<iostream>
 	"linked_list.h"
 	"secondary_indexing.h"
@@ -30,18 +30,19 @@
 1479590989 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/node.cpp
 	"node.h"
 
-1480455669 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/control.cpp
+1480460069 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/control.cpp
 	"control.h"
 
-1480435895 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/control.h
+1480458345 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/control.h
 	"secondary_indexing.h"
 	"reader.h"
+	"writer.h"
 	<iostream>
 
-1480453615 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/secondary_indexing.cpp
+1480458345 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/secondary_indexing.cpp
 	"secondary_indexing.h"
 
-1480444622 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/secondary_indexing.h
+1480458319 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/secondary_indexing.h
 	"index_list.h"
 	"register_list.h"
 	<iostream>
@@ -53,7 +54,7 @@
 	<stdio.h>
 	"secondary_indexing.h"
 
-1480455463 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/reader.cpp
+1480455831 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/reader.cpp
 	"reader.h"
 	<stdio.h>
 	<string.h>
@@ -64,21 +65,30 @@
 	<stdlib.h>
 	<string>
 
-1480450165 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/index_list.h
+1480458098 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/index_list.h
 	<string>
 	<stdexcept>
 	"register_list.h"
 
-1480450151 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/register_list.h
+1480458160 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/register_list.h
 	<string>
 	<stdexcept>
 
-1480450635 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/index_list.cpp
+1480458155 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/index_list.cpp
 	"index_list.h"
 	"register_list.h"
 	<iostream>
 
-1480450625 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/register_list.cpp
+1480458160 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/register_list.cpp
 	"register_list.h"
 	<iostream>
+
+1480460004 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/writer.h
+	<fstream>
+	<iostream>
+	"index_list.h"
+	"register_list.h"
+
+1480460088 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/writer.cpp
+	"writer.h"
 

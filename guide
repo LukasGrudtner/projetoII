@@ -51,3 +51,34 @@
 
 	OBS.: Na hora da pesquisa, será necessário verificar a primeira linha para ver se fecha com a chave procurada, caso não,
 	avança-se a próxima linha e verifica a seguinte, caso chegue no final, conclue-se que a chave não existe no disco.
+
+	### PADRÃO DE ESCRITA DA LISTA ENCADEADA EM ARQUIVO ###
+
+size(número de índices)
+índice(dado) quantidade size(número de registros) reg1 qtde(reg) reg2 qtde(reg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

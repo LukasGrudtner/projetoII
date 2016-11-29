@@ -26,6 +26,8 @@ class RegisterList
         void incQuantidadeNode(const int& data);
         void setQuantidadeNode(const int& data);
         std::size_t size() const;
+        int getWriteData();
+        std::size_t getWriteQtde();
         void printaTodosOsElementos();
 
     protected:
@@ -104,6 +106,7 @@ class RegisterList
 
     Node* head{nullptr}; /**< Declaração da cabeça da lista. */
     std::size_t size_{0u}; /**< Declaração do tamanho da lista. */
+    Node *write;
 
 };
 

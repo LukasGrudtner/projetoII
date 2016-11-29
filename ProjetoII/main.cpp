@@ -8,7 +8,6 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     cout << "Hello world!" << endl;
-    SecondaryIndexing* secondIndex = new SecondaryIndexing();
     /*
     secondIndex->addIndexKey("lukas");
     cout << secondIndex->findIndexKey("lukas") << endl;

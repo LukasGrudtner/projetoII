@@ -3,6 +3,7 @@
 
 #include "secondary_indexing.h"
 #include "reader.h"
+#include "writer.h"
 #include <iostream>
 
 
@@ -17,6 +18,8 @@ class Control
     private:
         SecondaryIndexing* secondIndex;
         Reader* reader;
+        Writer *writer;
+        IndexList *index;
 };
 
 #endif // CONTROL_H

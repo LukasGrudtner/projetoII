@@ -8,7 +8,7 @@
 class SecondaryIndexing
 {
     public:
-        SecondaryIndexing();
+        SecondaryIndexing(IndexList* index);
         virtual ~SecondaryIndexing();
 
         // Adiciona chaves com o paramatro nome, e cria um endereço de registro para essa chave
@@ -26,13 +26,10 @@ class SecondaryIndexing
 
         void mostraChaves();
 
-
-
-
     protected:
 
     private:
-        IndexList* indexKeys = new IndexList();
+        IndexList* indexKeys;
 };
 
 #endif // SECONDARYINDEXING_H
