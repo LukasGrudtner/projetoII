@@ -1,24 +1,24 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef INDEXLIST_H
+#define INDEXLIST_H
 
 #include <string>
 #include <stdexcept>
+#include "register_list.h"
 
 using namespace std;
 
-class LinkedList
+class IndexList
 {
     public:
-        LinkedList();
-        virtual ~LinkedList();
+        IndexList();
+        virtual ~IndexList();
         void clear();
-        void push_back(const string& data, LinkedList* regAdress);
-        void push_back_register(const string& data, std::size_t quantidade_);
-        void push_front(const string& data, LinkedList* regAdress);
+        void push_back(const string& data, RegisterList* regAdress);
+        void push_front(const string& data, RegisterList* regAdress);
         void push_front(const string& data);
-        void insert(const string& data, std::size_t index, LinkedList* regAdress);
+        void insert(const string& data, std::size_t index, RegisterList* regAdress);
         void insert(const string& data, std::size_t index);
-        void insert_sorted(const string& data, LinkedList* regAdress);
+        void insert_sorted(const string& data, RegisterList* regAdress);
         string& at(std::size_t index);
         string pop(std::size_t index);
         string pop_back();
@@ -26,7 +26,7 @@ class LinkedList
         void remove(const string& data);
         bool empty() const;
         bool contains(const string& data) const;
-        LinkedList* find(const string& data) const;
+        RegisterList* find(const string& data) const;
         std::size_t getQuantidadeNode(const string& data) const;
         void incQuantidadeNode(const string& data);
         std::size_t size() const;
@@ -52,7 +52,7 @@ class LinkedList
                 /param data dado a ser inserido no Node.
                 /param next ponteiro para o próximo Node.
             */
-            Node(const string& data, LinkedList* lista):
+            Node(const string& data, RegisterList* lista):
                 data_{data},
                 lista_{lista}
             {}
@@ -105,11 +105,11 @@ class LinkedList
                 quantidade_ = quantidade;
             }
 
-            void setLista(LinkedList* list) {
+            void setLista(RegisterList* list) {
                 lista_ = list;
             }
 
-            LinkedList* getLista() {
+            RegisterList* getLista() {
                 return lista_;
             }
 
@@ -120,7 +120,7 @@ class LinkedList
          private:
             string data_; /**< Declaração do dado, do tipo T. */
             std::size_t quantidade_ = 0;
-            LinkedList* lista_{nullptr};
+            RegisterList* lista_{nullptr};
             Node* next_{nullptr}; /**< Declaração do ponteiro para o próximo Node. */
     };
 
@@ -129,4 +129,4 @@ class LinkedList
 
 };
 
-#endif // LINKEDLIST_H
+#endif // INDEXLIST_H

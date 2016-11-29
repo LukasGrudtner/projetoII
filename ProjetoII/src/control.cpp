@@ -5,7 +5,7 @@ Control::Control()
     secondIndex = new SecondaryIndexing();
     reader = new Reader(secondIndex);
 
-    secondIndex->mostraChaves();
+    //secondIndex->mostraChaves();
 }
 
 Control::~Control()

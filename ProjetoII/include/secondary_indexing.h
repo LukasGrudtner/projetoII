@@ -1,7 +1,8 @@
 #ifndef SECONDARYINDEXING_H
 #define SECONDARYINDEXING_H
 
-#include "linked_list.h"
+#include "index_list.h"
+#include "register_list.h"
 #include <iostream>
 
 class SecondaryIndexing
@@ -15,10 +16,10 @@ class SecondaryIndexing
         bool addIndexKey(string name);
 
         // Retorna a chave com o parametro nome
-        LinkedList* findIndexKey(string name);
+        RegisterList* findIndexKey(string name);
 
         // Adiciona um registro
-        void addRegister(string data, string indexKey);
+        void addRegister(int data, string indexKey, std::size_t quantidade_);
 
         // Verifica se a chave já foi adicionada
         bool verificaExistenciaDeChave(string word);
@@ -31,7 +32,7 @@ class SecondaryIndexing
     protected:
 
     private:
-        LinkedList* indexKeys = new LinkedList();
+        IndexList* indexKeys = new IndexList();
 };
 
 #endif // SECONDARYINDEXING_H

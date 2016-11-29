@@ -11,8 +11,8 @@
 Reader::Reader(SecondaryIndexing* indiceSecundario)
 {
     secondIndex = indiceSecundario;
-    insertSecondaryKeys();
-    insertRegisters("6to4relay.1m.txt");
+    //insertSecondaryKeys();
+    insertRegisters("file");
 }
 
 Reader::~Reader()
@@ -29,7 +29,9 @@ void Reader::insertSecondaryKeys()
     while (!file.eof()) {
         getline(file, word);
         if (secondIndex->addIndexKey(word)) {
-            //insertRegisters(word);
+        cout << "===== InsertRegisters =====: " << word << endl;
+            insertRegisters(word);
+            cout << "===== InsertRegisters =====: " << word << endl;
         }
     }
     file.close();
@@ -37,10 +39,13 @@ void Reader::insertSecondaryKeys()
 
 void Reader::insertRegisters(string pivo)
 {
+
     std::ifstream file;
-    string word, teste;
     file.open("manpage.dat");
-    int counter;
+    long posicaoName, posicaoContents;
+    std::size_t counter = 0;
+    string name, contents;
+    int numRegistro = 0;
 
     struct manpage {
         char name[52];
@@ -49,58 +54,43 @@ void Reader::insertRegisters(string pivo)
 
     struct manpage registro;
 
-    file.read((char *) &registro, sizeof(struct manpage));
-    //word = registro.name;
-    //cout << endl << "Word: " << word << endl << endl;
 
-    /*
-    int j = 0;
-    for (int k = 0; k < 52; k++) {
-        if (word[k] != ' ' || word[k] != '0') {
-            teste[j] = word[k];
-            j++;
-            cout << word[k] << endl;
-        } else {
-            if (teste == pivo) {
+    //for (int i = 0; i < 2; i++) {
+        cout << "numRegistro: " << numRegistro << endl;
+        file.seekg(139767*0);
+        file.read((char *) &registro, sizeof(struct manpage));
+        name = registro.name;
+        cout << "NAME: " << name << endl;
+        contents = registro.contents;
+
+        posicaoName = 0;
+        while (posicaoName != -1) {
+            posicaoName = name.find("is");
+            cout << posicaoName << endl;
+            if (posicaoName != -1) {
+                //counter++;
+                name[posicaoName] = 'c';
+            }
+        }
+
+
+        posicaoContents = 0;
+        while (posicaoContents != -1) {
+            posicaoContents = contents.find("though");
+            cout << "posicaoContents: " << posicaoContents << endl;
+            if (posicaoContents != -1) {
                 counter++;
-                j = 0;
+                contents[posicaoContents] = 'c';
             }
         }
-    }*/
 
-/*
-    int d = 0;
-    for (int k = 0; k < 51; k++) {
-        if (word[k] == pivo[k]) {
-            d++;
-            teste += word[k];
-        } else {
-            if (strcmp(teste, pivo)) {
-                cout << "igual" << endl;
-                d = 0;
-            }
-        }
-    }
-    */
-/*
-    char word[] = registro.name;
-    char teste[] = pivo;
+        cout << "Counter: " << counter << endl;
+        //secondIndex->addRegister(numRegistro, pivo, counter);
+        //numRegistro++;
 
-    auto te = strstr(word, teste);
-    */
-    string l = registro.name;
-    string z = registro.contents;
-
-    int posicao = 0;
-    while (posicao != -1) {
-        posicao = z.find("support");
-        std::cout << "Posição: " << posicao << endl;
-        z[posicao+1] = 'c';
-    }
-
-
-
+    //}
     file.close();
+
 
 }
 

@@ -1,60 +1,32 @@
-#include "linked_list.h"
+#include "index_list.h"
+#include "register_list.h"
 #include <iostream>
 
-LinkedList::LinkedList()
+IndexList::IndexList()
 {
     size_ = 0;
     head = new Node();
 }
 
-LinkedList::~LinkedList()
+IndexList::~IndexList()
 {
     clear();
     delete(head);
 }
 
-void LinkedList::clear()
+void IndexList::clear()
 {
     while (!empty()) {
         pop_front();
     }
 }
 
-void LinkedList::push_back(const string& data, LinkedList* regAdress)
+void IndexList::push_back(const string& data, RegisterList* regAdress)
 {
     insert(data, size(), regAdress);
 }
 
-void LinkedList::push_back_register(const string& data, size_t quantidade_)
-{
-    Node* atual;
-    Node* novo;
-
-    if (novo == NULL) {
-        throw std::out_of_range("Erro Lista Cheia!");
-    } else {
-        if(size() == 0) {
-            novo = new Node(data);
-            novo->setQuantidade(quantidade_);
-            head->next(novo);
-            size_++;
-        } else {
-            atual = head->next();
-            while (atual->data() != data && atual->next() != nullptr) {
-                atual = atual->next();
-            }
-            if (atual->data() == data) {
-                atual->setQuantidade(quantidade_);
-            } else {
-                novo = new Node(data);
-                novo->setQuantidade(quantidade_);
-                atual->next(novo);
-            }
-        }
-    }
-}
-
-void LinkedList::push_front(const string& data, LinkedList* regAdress)
+void IndexList::push_front(const string& data, RegisterList* regAdress)
 {
     Node* novo;
     novo = new Node(data, regAdress);
@@ -75,7 +47,7 @@ void LinkedList::push_front(const string& data, LinkedList* regAdress)
     }
 }
 
-void LinkedList::push_front(const string& data)
+void IndexList::push_front(const string& data)
 {
     Node* novo;
     novo = new Node(data);
@@ -96,7 +68,7 @@ void LinkedList::push_front(const string& data)
     }
 }
 
-void LinkedList::insert(const string& data, std::size_t index, LinkedList* regAdress)
+void IndexList::insert(const string& data, std::size_t index, RegisterList* regAdress)
 {
     Node *novo;
     Node *anterior;
@@ -129,7 +101,7 @@ void LinkedList::insert(const string& data, std::size_t index, LinkedList* regAd
     }
 }
 
-void LinkedList::insert(const string& data, std::size_t index)
+void IndexList::insert(const string& data, std::size_t index)
 {
     Node *novo;
     Node *anterior;
@@ -162,7 +134,7 @@ void LinkedList::insert(const string& data, std::size_t index)
     }
 }
 
-void LinkedList::insert_sorted(const string& data, LinkedList* regAdress)
+void IndexList::insert_sorted(const string& data, RegisterList* regAdress)
 {
     Node* atual;
     auto posicao = 0;
@@ -185,7 +157,7 @@ void LinkedList::insert_sorted(const string& data, LinkedList* regAdress)
     }
 }
 
-string& LinkedList::at(std::size_t index)
+string& IndexList::at(std::size_t index)
 {
     Node* anterior = head;
 
@@ -207,7 +179,7 @@ string& LinkedList::at(std::size_t index)
     }
 }
 
-string LinkedList::pop(std::size_t index)
+string IndexList::pop(std::size_t index)
 {
     Node *atual;
     Node *eliminar;
@@ -241,7 +213,7 @@ string LinkedList::pop(std::size_t index)
     return volta;
 }
 
-string LinkedList::pop_back()
+string IndexList::pop_back()
 {
     if (empty()) {
         throw std::out_of_range("Erro Lista Vazia!");
@@ -249,7 +221,7 @@ string LinkedList::pop_back()
     return pop(size()-1);
 }
 
-string LinkedList::pop_front()
+string IndexList::pop_front()
 {
     Node* saiu;
     string volta;
@@ -268,7 +240,7 @@ string LinkedList::pop_front()
     }
 }
 
-void LinkedList::remove(const string& data)
+void IndexList::remove(const string& data)
 {
     Node *atual = head->next();
     Node *anterior = head;
@@ -283,12 +255,12 @@ void LinkedList::remove(const string& data)
     size_--;
 }
 
-bool LinkedList::empty() const
+bool IndexList::empty() const
 {
     return (size_ == 0);
 }
 
-bool LinkedList::contains(const string& data) const
+bool IndexList::contains(const string& data) const
 {
     Node *anterior = head;
 
@@ -302,7 +274,7 @@ bool LinkedList::contains(const string& data) const
     return false;
 }
 
-LinkedList* LinkedList::find(const string& data) const
+RegisterList* IndexList::find(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -316,12 +288,12 @@ LinkedList* LinkedList::find(const string& data) const
     return anterior->getLista();
 }
 
-std::size_t LinkedList::size() const
+std::size_t IndexList::size() const
 {
     return size_;
 }
 
-std::size_t LinkedList::getQuantidadeNode(const string& data) const
+std::size_t IndexList::getQuantidadeNode(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -333,8 +305,8 @@ std::size_t LinkedList::getQuantidadeNode(const string& data) const
     return anterior->getQuantidade();
 }
 
-void LinkedList::incQuantidadeNode(const string& data)
-{
+void IndexList::incQuantidadeNode(const string& data)
+{cout << "2"<< endl;
     auto i = 0u;
     Node* anterior = head->next();
 
@@ -344,3 +316,4 @@ void LinkedList::incQuantidadeNode(const string& data)
     }
     anterior->incQuantidade();
 }
+

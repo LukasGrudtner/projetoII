@@ -2,7 +2,7 @@
 
 SecondaryIndexing::SecondaryIndexing()
 {
-    //indexKeys = new LinkedList();
+
 }
 
 SecondaryIndexing::~SecondaryIndexing()
@@ -12,24 +12,26 @@ SecondaryIndexing::~SecondaryIndexing()
 
 bool SecondaryIndexing::addIndexKey(string name)
 {
+cout << "addIndexKey" << endl;
     if (!verificaExistenciaDeChave(name)) {
-        LinkedList* registerAdress = new LinkedList();
+        RegisterList* registerAdress = new RegisterList();
         indexKeys->push_back(name, registerAdress);
         return true;
     } else {
         indexKeys->incQuantidadeNode(name);
+        cout << "IndexKey REPETIDA" << endl;
         return false;
     }
 }
 
-LinkedList* SecondaryIndexing::findIndexKey(string name)
+RegisterList* SecondaryIndexing::findIndexKey(string name)
 {
     return indexKeys->find(name);
 }
 
-void SecondaryIndexing::addRegister(string data, string indexKey)
+void SecondaryIndexing::addRegister(int data, string indexKey, std::size_t quantidade_)
 {
-    indexKeys->find(indexKey)->push_back(data);
+    indexKeys->find(indexKey)->push_back_register(data, quantidade_);
 }
 
 bool SecondaryIndexing::verificaExistenciaDeChave(string word)

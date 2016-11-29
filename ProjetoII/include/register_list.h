@@ -1,34 +1,30 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef REGISTERLIST_H
+#define REGISTERLIST_H
 
 #include <string>
 #include <stdexcept>
 
 using namespace std;
 
-class LinkedList
+class RegisterList
 {
     public:
-        LinkedList();
-        virtual ~LinkedList();
+        RegisterList();
+        virtual ~RegisterList();
         void clear();
-        void push_back(const string& data, LinkedList* regAdress);
-        void push_back_register(const string& data, std::size_t quantidade_);
-        void push_front(const string& data, LinkedList* regAdress);
-        void push_front(const string& data);
-        void insert(const string& data, std::size_t index, LinkedList* regAdress);
-        void insert(const string& data, std::size_t index);
-        void insert_sorted(const string& data, LinkedList* regAdress);
-        string& at(std::size_t index);
-        string pop(std::size_t index);
-        string pop_back();
-        string pop_front();
-        void remove(const string& data);
+        void push_back_register(const int& data, std::size_t quantidade_);
+        void push_front(const int& data);
+        void insert(const int& data, std::size_t index);
+        int& at(std::size_t index);
+        int pop(std::size_t index);
+        int pop_back();
+        int pop_front();
+        void remove(const int& data);
         bool empty() const;
-        bool contains(const string& data) const;
-        LinkedList* find(const string& data) const;
-        std::size_t getQuantidadeNode(const string& data) const;
-        void incQuantidadeNode(const string& data);
+        bool contains(const int& data) const;
+        std::size_t getQuantidadeNode(const int& data) const;
+        void incQuantidadeNode(const int& data);
+        void setQuantidadeNode(const int& data);
         std::size_t size() const;
 
     protected:
@@ -43,25 +39,15 @@ class LinkedList
             */
             Node(){};
 
-            Node(const string& data):
+            Node(const int& data):
                 data_{data}
-            {}
-
-            //! Construtor
-            /*! Método construtor da classe Node com dois parâmetros.
-                /param data dado a ser inserido no Node.
-                /param next ponteiro para o próximo Node.
-            */
-            Node(const string& data, LinkedList* lista):
-                data_{data},
-                lista_{lista}
             {}
 
             //! Data
             /*! Método getter de um Node.
                 /return o dado do elemento.
             */
-            string& data() {
+            int& data() {
                 return data_;
             }
 
@@ -69,7 +55,7 @@ class LinkedList
             /*! Método getter de um Node, onde o dado retornado não será alterado.
                 /return o dado do elemento.
             */
-            const string& data() const {
+            const int& data() const {
                 return data_;
             }
 
@@ -105,22 +91,13 @@ class LinkedList
                 quantidade_ = quantidade;
             }
 
-            void setLista(LinkedList* list) {
-                lista_ = list;
-            }
-
-            LinkedList* getLista() {
-                return lista_;
-            }
-
             std::size_t getQuantidade() {
                 return quantidade_;
             }
 
          private:
-            string data_; /**< Declaração do dado, do tipo T. */
+            int data_; /**< Declaração do dado, do tipo T. */
             std::size_t quantidade_ = 0;
-            LinkedList* lista_{nullptr};
             Node* next_{nullptr}; /**< Declaração do ponteiro para o próximo Node. */
     };
 
@@ -129,4 +106,5 @@ class LinkedList
 
 };
 
-#endif // LINKEDLIST_H
+#endif // REGISTERLIST_H
+
