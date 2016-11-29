@@ -11,8 +11,8 @@
 Reader::Reader(SecondaryIndexing* indiceSecundario)
 {
     secondIndex = indiceSecundario;
-    //insertSecondaryKeys();
-    insertRegisters("file");
+    insertSecondaryKeys();
+    //insertRegisters("across");
 }
 
 Reader::~Reader()
@@ -28,10 +28,12 @@ void Reader::insertSecondaryKeys()
 
     while (!file.eof()) {
         getline(file, word);
-        if (secondIndex->addIndexKey(word)) {
-        cout << "===== InsertRegisters =====: " << word << endl;
-            insertRegisters(word);
-            cout << "===== InsertRegisters =====: " << word << endl;
+        if (word[0] != '\0') {
+            if (secondIndex->addIndexKey(word)) {
+                cout << "===== InsertRegisters =====: " << word << endl;
+                insertRegisters(word);
+                cout << "===== InsertRegisters =====: " << word << endl;
+            }
         }
     }
     file.close();
@@ -55,9 +57,9 @@ void Reader::insertRegisters(string pivo)
     struct manpage registro;
 
 
-    //for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 2; i++) {
         cout << "numRegistro: " << numRegistro << endl;
-        file.seekg(139767*0);
+        file.seekg(139767*i);
         file.read((char *) &registro, sizeof(struct manpage));
         name = registro.name;
         cout << "NAME: " << name << endl;
@@ -65,22 +67,22 @@ void Reader::insertRegisters(string pivo)
 
         posicaoName = 0;
         while (posicaoName != -1) {
-            posicaoName = name.find("is");
-            cout << posicaoName << endl;
+            posicaoName = name.find(pivo);
             if (posicaoName != -1) {
-                //counter++;
-                name[posicaoName] = 'c';
+                counter++;
+                name[posicaoName+1] = 'c';
             }
         }
 
 
         posicaoContents = 0;
         while (posicaoContents != -1) {
-            posicaoContents = contents.find("though");
+            posicaoContents = contents.find(pivo);
             cout << "posicaoContents: " << posicaoContents << endl;
             if (posicaoContents != -1) {
                 counter++;
                 contents[posicaoContents] = 'c';
+                contents[posicaoContents+1] = 'c';
             }
         }
 
@@ -88,7 +90,7 @@ void Reader::insertRegisters(string pivo)
         //secondIndex->addRegister(numRegistro, pivo, counter);
         //numRegistro++;
 
-    //}
+    }
     file.close();
 
 
