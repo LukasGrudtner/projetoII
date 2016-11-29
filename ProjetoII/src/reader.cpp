@@ -25,7 +25,6 @@ void Reader::insertSecondaryKeys()
     std::ifstream file;
     std::string word;
     file.open("secondaryKeys.dat");
-
     while (!file.eof()) {
         getline(file, word);
         if (word[0] != '\0') {
@@ -41,7 +40,6 @@ void Reader::insertSecondaryKeys()
 
 void Reader::insertRegisters(string pivo)
 {
-
     std::ifstream file;
     file.open("manpage.dat");
     long posicaoName, posicaoContents;
@@ -58,6 +56,7 @@ void Reader::insertRegisters(string pivo)
 
 
     while (!file.eof()) {
+        //cout << "Word: " << pivo << endl;
         //cout << "numRegistro: " << numRegistro << endl;
         file.seekg(139767*numRegistro);
         file.read((char *) &registro, sizeof(struct manpage));
@@ -70,7 +69,7 @@ void Reader::insertRegisters(string pivo)
             posicaoName = name.find(pivo);
             if (posicaoName != -1) {
                 counter++;
-                name[posicaoName] = 'c';
+                name[posicaoName] = '\0';
             }
         }
 
@@ -81,15 +80,16 @@ void Reader::insertRegisters(string pivo)
             //cout << "posicaoContents: " << posicaoContents << endl;
             if (posicaoContents != -1) {
                 counter++;
-                contents[posicaoContents] = 'c';
-                contents[posicaoContents+1] = 'c';
+                contents[posicaoContents] = '\0';
             }
         }
 
         secondIndex->addRegister(numRegistro, pivo, counter);
+        //cout << "Registro: " << numRegistro << endl;
         numRegistro++;
 
     }
+    cout << "Pivô: " << pivo << "\n";
     file.close();
 
 

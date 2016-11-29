@@ -40,5 +40,6 @@ bool SecondaryIndexing::verificaExistenciaDeChave(string word)
 void SecondaryIndexing::mostraChaves()
 {
     /* Listar todos os elementos da IndexList, assim como todos os elementos da RegisterList para cada índice */
+
     indexKeys->printaTodosOsElementos();
 }
