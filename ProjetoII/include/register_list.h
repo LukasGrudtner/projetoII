@@ -3,6 +3,7 @@
 
 #include <string>
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
@@ -96,11 +97,12 @@ class RegisterList
 
             std::size_t getQuantidade() {
                 return quantidade_;
+                cout << "Get Quantidade: " << quantidade_ << endl;
             }
+            std::size_t quantidade_ = 0;
 
          private:
             int data_; /**< Declaração do dado, do tipo T. */
-            std::size_t quantidade_ = 0;
             Node* next_{nullptr}; /**< Declaração do ponteiro para o próximo Node. */
     };
 

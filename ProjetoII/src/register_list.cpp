@@ -23,6 +23,7 @@ void RegisterList::clear()
 
 void RegisterList::push_back_register(const int& data, size_t quantidade_)
 {
+    cout << "Push Back Reg[" << data << "] Quantidade[" << quantidade_ << "]" << endl;
     Node* atual;
     Node* novo;
 
@@ -32,6 +33,7 @@ void RegisterList::push_back_register(const int& data, size_t quantidade_)
         if(size() == 0) {
             novo = new Node(data);
             novo->setQuantidade(quantidade_);
+            std::cout << "Quantidade[" << data << "] " << novo->getQuantidade() << endl;
             head->next(novo);
             size_++;
         } else {
@@ -41,10 +43,13 @@ void RegisterList::push_back_register(const int& data, size_t quantidade_)
             }
             if (atual->data() == data) {
                 atual->setQuantidade(quantidade_);
+                std::cout << "Quantidade: " << novo->getQuantidade() << endl;
             } else {
                 novo = new Node(data);
                 novo->setQuantidade(quantidade_);
+                std::cout << "Quantidade[" << data << "] " << novo->getQuantidade() << endl;
                 atual->next(novo);
+                size_++;
             }
         }
     }
@@ -262,12 +267,17 @@ void RegisterList::printaTodosOsElementos()
 
 int RegisterList::getWriteData()
 {
-    write = write->next();
+    //write = write->next();
+    //cout << "Write->Data: " << write->data() << endl;
+    //std::cout << "Write->Quantidade: " << write->quantidade_ << endl;
     return write->data();
 }
 
 std::size_t RegisterList::getWriteQtde()
 {
-    return write->getQuantidade();
+    write = write->next();
+    //cout << "Write->Data: " << write->data() << endl;
+    //std::cout << "Write->Quantidade: " << write->quantidade_ << endl;
+    return write->quantidade_;
 }
 

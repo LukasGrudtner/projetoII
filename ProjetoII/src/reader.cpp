@@ -43,7 +43,7 @@ void Reader::insertRegisters(string pivo)
     std::ifstream file;
     file.open("manpage.dat");
     long posicaoName, posicaoContents;
-    std::size_t counter = 0;
+    std::size_t counter;
     string name, contents;
     int numRegistro = 0;
 
@@ -55,7 +55,8 @@ void Reader::insertRegisters(string pivo)
     struct manpage registro;
 
 
-    while (!file.eof()) {
+    while (numRegistro < 2) {
+        counter = 0;
         //cout << "Word: " << pivo << endl;
         //cout << "numRegistro: " << numRegistro << endl;
         file.seekg(139767*numRegistro);
@@ -85,7 +86,7 @@ void Reader::insertRegisters(string pivo)
         }
 
         secondIndex->addRegister(numRegistro, pivo, counter);
-        //cout << "Registro: " << numRegistro << endl;
+        cout << "Registro: " << numRegistro << endl;
         numRegistro++;
 
     }

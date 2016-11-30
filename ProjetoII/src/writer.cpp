@@ -21,15 +21,19 @@ void Writer::writeList()
     //file.write((char *) &tamanhoIndexList, sizeof(tamanhoIndexList));
     file << tamanhoIndexList;
 
-    string data = indexList->getWriteData();
-    RegisterList* registerList = indexList->find(data);
+    for (int j = 0; j < tamanhoIndexList; ++j) {
+        string data = indexList->getWriteData();
+        RegisterList* registerList = indexList->find(data);
+        int tamanhoRegisterList = registerList->size();
+        //cout << "Tamanho da Lista de Registros: " << registerList->size() << endl;
 
-    int tamanhoRegisterList = registerList->size();
-
-    file << '\n' << data << ' ' << tamanhoRegisterList << ' ';
-    for (int i = 0; i < tamanhoRegisterList; ++i) {
-        file << registerList->getWriteData()+1 << ' ' << registerList->getWriteQtde()+1 << ' ';
-        std::cout << registerList->getWriteData()+1 << ' ' << registerList->getWriteQtde()+1 << ' ';
+        file << '\n' << data << ' ' << tamanhoRegisterList << ' ';
+        for (int i = 0; i < tamanhoRegisterList; ++i) {
+            int writeQtde = registerList->getWriteQtde();
+            int regist = registerList->getWriteData();
+            file << regist << ' ' << writeQtde << ' ';
+            //std::cout << registerList->getWriteData() << ' ' << registerList->getWriteQtde() << ' ';
+        }
     }
     file.close();
 
