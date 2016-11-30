@@ -12,7 +12,6 @@ Reader::Reader(SecondaryIndexing* indiceSecundario)
 {
     secondIndex = indiceSecundario;
     insertSecondaryKeys();
-    //insertRegisters("across");
 }
 
 Reader::~Reader()
@@ -29,9 +28,7 @@ void Reader::insertSecondaryKeys()
         getline(file, word);
         if (word[0] != '\0') {
             if (secondIndex->addIndexKey(word)) {
-                //cout << "===== InsertRegisters =====: " << word << endl;
                 insertRegisters(word);
-                //cout << "===== InsertRegisters =====: " << word << endl;
             }
         }
     }
@@ -57,12 +54,9 @@ void Reader::insertRegisters(string pivo)
 
     while (numRegistro < 2) {
         counter = 0;
-        //cout << "Word: " << pivo << endl;
-        //cout << "numRegistro: " << numRegistro << endl;
         file.seekg(139767*numRegistro);
         file.read((char *) &registro, sizeof(struct manpage));
         name = registro.name;
-        //cout << "NAME: " << name << endl;
         contents = registro.contents;
 
         posicaoName = 0;
@@ -78,7 +72,6 @@ void Reader::insertRegisters(string pivo)
         posicaoContents = 0;
         while (posicaoContents != -1) {
             posicaoContents = contents.find(pivo);
-            //cout << "posicaoContents: " << posicaoContents << endl;
             if (posicaoContents != -1) {
                 counter++;
                 contents[posicaoContents] = '\0';
@@ -86,17 +79,38 @@ void Reader::insertRegisters(string pivo)
         }
 
         secondIndex->addRegister(numRegistro, pivo, counter);
-        cout << "Registro: " << numRegistro << endl;
+        //cout << "Registro: " << numRegistro << endl;
         numRegistro++;
 
     }
-    cout << "Pivô: " << pivo << "\n";
+    //cout << "Pivô: " << pivo << "\n";
     file.close();
 
 
 }
 
+IndexList* Reader::mountInvertedList()
+{
+    IndexList *indexKeys = new IndexList();
+    string index;
+    size_t qtdeIndex, qtdeRegister;
+    int register_;
+    ifstream file;
+    file.open("invertedList.dat");
 
+    int sizeIndex, sizeRegister;
 
+    file >> sizeIndex;
 
+    for (int i = 0; i < sizeIndex; i++) {
+        file >> index >> qtdeIndex;
+        RegisterList *registerList = new RegisterList();
+        indexKeys->push_back(index, registerList);
+        for (int j = 0; j < sizeRegister; j++) {
+            file >> register_ >> qtdeRegister;
+            registerList->push_back_register(register_, qtdeRegister);
+        }
+    }
 
+    return indexKeys;
+}

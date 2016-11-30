@@ -15,6 +15,7 @@ class Reader
         virtual ~Reader();
         void insertSecondaryKeys();
         void insertRegisters(string pivo);
+        IndexList* mountInvertedList();
 
     protected:
 
