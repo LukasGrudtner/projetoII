@@ -133,7 +133,6 @@ void Reader::searchInvertedFile()
     int i = 0;
     while (teste == false && i < size) {
         file >> word;
-        //cout << "Word: " << word << endl;
         if (word == index)
             teste = true;
         else
@@ -142,7 +141,7 @@ void Reader::searchInvertedFile()
     }
 
     if (i == size) {
-        cout << "\nDesculpe, esse índice nao consta em nossos servidores... \nBusque por outra palavra.\n";
+        cout << "\nDesculpe, o índice [" << index << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
     } else {
 
         int qtdeRegister;
@@ -155,5 +154,96 @@ void Reader::searchInvertedFile()
     }
 
     file.close();
+
+}
+
+void Reader::conjunctiveSearch()
+{
+    RegisterList* lista1 = new RegisterList();
+    RegisterList* lista2 = new RegisterList();
+    RegisterList* listaBusca = new RegisterList();
+    fstream file;
+    int size;
+    string word, index1, index2;
+    cout << "Digite as 2 palavras (separadas por um espaço): \n";
+    cin >> index1 >> index2;
+    file.open("invertedList.dat");
+    bool teste = false;
+
+    /* #################################### */
+    file >> size;
+    int i = 0;
+    while (teste == false && i < size) {
+        file >> word;
+        if (word == index1)
+            teste = true;
+        else
+            getline(file, word);
+        i++;
+    }
+
+
+    if (i == size) {
+        cout << "\nDesculpe, o índice [" << index1 << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
+    } else {
+        int qtdeRegister;
+        file >> qtdeRegister;
+        int register1;
+        size_t qtde1;
+        for (int j = 0; j < qtdeRegister; j++) {
+            file >> register1 >> qtde1;
+            lista1->push_back_register(register1, qtde1);
+        }
+    }
+    /* #################################### */
+
+    file.seekg(0, file.beg);
+    teste = false;
+    file >> size;
+    int k = 0;
+    while (teste == false && k < size) {
+        file >> word;
+        if (word == index2)
+            teste = true;
+        else
+            getline(file, word);
+        k++;
+    }
+
+    if (k == size) {
+        cout << "\nDesculpe, o índice [" << index2 << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
+    } else {
+        int qtdeRegister;
+        file >> qtdeRegister;
+        int register2, qtde2;
+        for (int j = 0; j < qtdeRegister; j++) {
+            file >> register2 >> qtde2;
+            lista2->push_back_register(register2, qtde2);
+        }
+    }
+    /* #################################### */
+    file.close();
+
+    int registroProcurado;
+
+    for (int i = 0; i < lista1->size(); i++) {
+        registroProcurado = lista1->at(i);
+        for (int j = 0; j < lista2->size(); j++) {
+            if (registroProcurado == lista2->at(j)) {
+                listaBusca->push_back_register(registroProcurado, 0);
+            }
+        }
+    }
+
+    delete lista1;
+    delete lista2;
+
+    for (int k = 0; k < listaBusca->size(); k++) {
+        cout << "Igual: " << listaBusca->at(k) << "\n";
+    }
+
+    delete listaBusca;
+
+
 
 }

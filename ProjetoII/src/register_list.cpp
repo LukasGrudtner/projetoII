@@ -11,7 +11,7 @@ RegisterList::RegisterList()
 RegisterList::~RegisterList()
 {
     clear();
-    delete(head);
+    delete head;
 }
 
 void RegisterList::clear()
@@ -26,9 +26,9 @@ void RegisterList::push_back_register(const int& data, size_t quantidade_)
     Node* atual;
     Node* novo;
 
-    if (novo == NULL) {
-        throw std::out_of_range("Erro Lista Cheia!");
-    } else {
+   // if (novo == NULL) {
+    //    throw std::out_of_range("Erro Lista Cheia!");
+    //} else {
         if(size() == 0) {
             novo = new Node(data);
             novo->setQuantidade(quantidade_);
@@ -48,7 +48,7 @@ void RegisterList::push_back_register(const int& data, size_t quantidade_)
                 size_++;
             }
         }
-    }
+    //}
 }
 
 void RegisterList::push_front(const int& data)

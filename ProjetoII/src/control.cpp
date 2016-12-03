@@ -27,11 +27,15 @@ void Control::Menu()
     do {
         cout << "\nO que você deseja fazer?\n\n"
              << "1. Pesquisar um índice secundário.\n"
-             << "2. Sair.\n\n";
+             << "2. Busca conjuntiva.\n"
+             << "3. Sair.\n\n";
         cin >> answer;
         cout << "\n";
 
         if (answer == 1)
             reader->searchInvertedFile();
-    } while (answer != 2);
+        if (answer == 2)
+            reader->conjunctiveSearch();
+
+    } while (answer != 3);
 }
