@@ -251,7 +251,7 @@ void RegisterList::incQuantidadeNode(const string& data)
     anterior->incQuantidade();
 }
 
-void RegisterList::printaTodosOsElementos()
+void RegisterList::printsAllTheElements()
 {
     Node* atual = head->next();
 

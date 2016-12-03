@@ -318,13 +318,13 @@ void IndexList::incQuantidadeNode(const string& data)
     anterior->incQuantidade();
 }
 
-void IndexList::printaTodosOsElementos()
+void IndexList::printsAllTheElements()
 {
     Node* atual = head->next();
 
     while (atual->next() != nullptr) {
         cout << "= " << atual->data() << " | " << atual->getQuantidade() << " =" << endl;
-        atual->getLista()->printaTodosOsElementos();
+        atual->getLista()->printsAllTheElements();
         atual = atual->next();
         cout << endl << endl;
     }

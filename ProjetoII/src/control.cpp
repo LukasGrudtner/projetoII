@@ -8,7 +8,7 @@ Control::Control()
     //secondIndex->mostraChaves();
     //writer = new Writer(index); // (ativar para escrever a lista invertida)
 
-    Menu();
+    mainMenu();
 
     //index = reader->mountInvertedList();
     //reader->searchInvertedFile();
@@ -19,10 +19,12 @@ Control::Control()
 
 Control::~Control()
 {
-    //dtor
+    delete index;
+    delete secondIndex;
+    delete reader;
 }
 
-void Control::Menu()
+void Control::mainMenu()
 {
     unsigned answer;
     do {
@@ -34,7 +36,6 @@ void Control::Menu()
              << "4. Sair.\n"
              << "==============================================================\n";
         cin >> answer;
-        cout << "==============================================================\n";
 
         if (answer == 1) {
             string index;
@@ -51,12 +52,12 @@ void Control::Menu()
         }
             //reader->conjunctiveSearch();
         if (answer == 3)
-            menuAvancado();
+            advancedMenu();
 
     } while (answer != 4);
 }
 
-void Control::menuAvancado()
+void Control::advancedMenu()
 {
     unsigned answer;
     do {
@@ -67,7 +68,6 @@ void Control::menuAvancado()
              << "3. Voltar para o Menu Inicial.\n\n"
              << "==============================================================\n";
         cin >> answer;
-        cout << "\n\n";
 
         //if (answer == 1)
 

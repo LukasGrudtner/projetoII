@@ -1,4 +1,3 @@
-#include <iostream>
 #include "secondary_indexing.h"
 #include "control.h"
 
@@ -6,8 +5,8 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    cout << "Hello world!" << endl;
-    Control* controle = new Control();
+    Control* control = new Control();
+    delete control;
 
 
 

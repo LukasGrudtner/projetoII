@@ -1,20 +1,20 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
+#include <iostream>
+
 #include "secondary_indexing.h"
 #include "reader.h"
 #include "writer.h"
 #include "search_engine.h"
-#include <iostream>
-
 
 class Control
 {
     public:
         Control();
         virtual ~Control();
-        void Menu();
-        void menuAvancado();
+        void mainMenu();
+        void advancedMenu();
 
     protected:
 

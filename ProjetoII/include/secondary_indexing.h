@@ -22,9 +22,9 @@ class SecondaryIndexing
         void addRegister(string data, string indexKey, std::size_t quantidade_);
 
         // Verifica se a chave já foi adicionada
-        bool verificaExistenciaDeChave(string word);
+        bool checksForKeyExistence(string word);
 
-        void mostraChaves();
+        void showKeys();
 
     protected:
 

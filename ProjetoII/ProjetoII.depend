@@ -1,6 +1,5 @@
 # depslib dependency file v1.0
-1480794808 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/main.cpp
-	<iostream>
+1480808084 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/main.cpp
 	"secondary_indexing.h"
 	"control.h"
 
@@ -29,20 +28,20 @@
 1479590989 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/node.cpp
 	"node.h"
 
-1480805126 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/control.cpp
+1480807967 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/control.cpp
 	"control.h"
 
-1480803442 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/control.h
+1480808289 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/control.h
+	<iostream>
 	"secondary_indexing.h"
 	"reader.h"
 	"writer.h"
 	"search_engine.h"
-	<iostream>
 
 1480801310 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/secondary_indexing.cpp
 	"secondary_indexing.h"
 
-1480801326 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/secondary_indexing.h
+1480808361 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/secondary_indexing.h
 	"index_list.h"
 	"register_list.h"
 	<iostream>
@@ -65,12 +64,12 @@
 	<stdlib.h>
 	<string>
 
-1480794503 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/index_list.h
+1480808528 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/index_list.h
 	<string>
 	<stdexcept>
 	"register_list.h"
 
-1480801301 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/register_list.h
+1480808501 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/register_list.h
 	<string>
 	<stdexcept>
 	<iostream>
@@ -99,6 +98,6 @@
 	<iostream>
 	"register_list.h"
 
-1480805108 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/search_engine.cpp
+1480805165 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/search_engine.cpp
 	"search_engine.h"
 

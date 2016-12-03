@@ -12,7 +12,7 @@ SecondaryIndexing::~SecondaryIndexing()
 
 bool SecondaryIndexing::addIndexKey(string name)
 {
-    if (!verificaExistenciaDeChave(name)) {
+    if (!checksForKeyExistence(name)) {
         RegisterList* registerAdress = new RegisterList();
         indexKeys->push_back(name, registerAdress);
         return true;
@@ -32,16 +32,16 @@ void SecondaryIndexing::addRegister(string data, string indexKey, std::size_t qu
     indexKeys->find(indexKey)->push_back_register(data, quantidade_);
 }
 
-bool SecondaryIndexing::verificaExistenciaDeChave(string word)
+bool SecondaryIndexing::checksForKeyExistence(string word)
 {
     return indexKeys->contains(word);
 }
 
-void SecondaryIndexing::mostraChaves()
+void SecondaryIndexing::showKeys()
 {
     /* Listar todos os elementos da IndexList, assim como todos os elementos da RegisterList para cada índice */
 
-    indexKeys->printaTodosOsElementos();
+    indexKeys->printsAllTheElements();
 }
 
 

@@ -1,17 +1,12 @@
-#include "reader.h"
-#include <stdio.h>
-#include <string.h>
 #include <fstream>
 #include <iostream>
-#include <sstream>
-#include <iomanip>
-#include <stdlib.h>
 #include <string>
+
+#include "reader.h"
 
 Reader::Reader(SecondaryIndexing* indiceSecundario)
 {
     secondIndex = indiceSecundario;
-    //insertSecondaryKeys(); // (ativar para escrever a lista invertida)
 }
 
 Reader::~Reader()
@@ -80,7 +75,6 @@ void Reader::insertRegisters(string pivo)
 
         if (counter > 0)
             secondIndex->addRegister(name, pivo, counter);
-        //cout << "Registro: " << numRegistro << endl;
         numRegistro++;
 
     }

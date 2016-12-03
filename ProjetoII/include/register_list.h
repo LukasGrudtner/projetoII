@@ -29,7 +29,7 @@ class RegisterList
         std::size_t size() const;
         string getWriteData();
         std::size_t getWriteQtde();
-        void printaTodosOsElementos();
+        void printsAllTheElements();
 
     protected:
 
