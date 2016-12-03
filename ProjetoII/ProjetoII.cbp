@@ -38,29 +38,45 @@
 		<Unit filename="include/control.h">
 			<Option virtualFolder="control/" />
 		</Unit>
+		<Unit filename="include/index_list.h">
+			<Option virtualFolder="structures/" />
+		</Unit>
 		<Unit filename="include/linked_list.h">
 			<Option virtualFolder="structures/" />
 		</Unit>
-		<Unit filename="include/manpage.h" />
 		<Unit filename="include/reader.h">
 			<Option virtualFolder="control/" />
 		</Unit>
+		<Unit filename="include/register_list.h">
+			<Option virtualFolder="structures/" />
+		</Unit>
 		<Unit filename="include/secondary_indexing.h">
 			<Option virtualFolder="index/" />
+		</Unit>
+		<Unit filename="include/writer.h">
+			<Option virtualFolder="control/" />
 		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="src/control.cpp">
 			<Option virtualFolder="control/" />
 		</Unit>
+		<Unit filename="src/index_list.cpp">
+			<Option virtualFolder="structures/" />
+		</Unit>
 		<Unit filename="src/linked_list.cpp">
 			<Option virtualFolder="structures/" />
 		</Unit>
-		<Unit filename="src/manpage.cpp" />
 		<Unit filename="src/reader.cpp">
 			<Option virtualFolder="control/" />
 		</Unit>
+		<Unit filename="src/register_list.cpp">
+			<Option virtualFolder="structures/" />
+		</Unit>
 		<Unit filename="src/secondary_indexing.cpp">
 			<Option virtualFolder="index/" />
+		</Unit>
+		<Unit filename="src/writer.cpp">
+			<Option virtualFolder="control/" />
 		</Unit>
 		<Extensions>
 			<code_completion />

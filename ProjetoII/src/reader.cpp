@@ -11,7 +11,7 @@
 Reader::Reader(SecondaryIndexing* indiceSecundario)
 {
     secondIndex = indiceSecundario;
-    insertSecondaryKeys();
+    //insertSecondaryKeys();
 }
 
 Reader::~Reader()
@@ -52,7 +52,7 @@ void Reader::insertRegisters(string pivo)
     struct manpage registro;
 
 
-    while (numRegistro < 2) {
+    while (!file.eof()) {
         counter = 0;
         file.seekg(139767*numRegistro);
         file.read((char *) &registro, sizeof(struct manpage));
@@ -78,12 +78,14 @@ void Reader::insertRegisters(string pivo)
             }
         }
 
-        secondIndex->addRegister(numRegistro, pivo, counter);
+        if (counter > 0)
+            secondIndex->addRegister(numRegistro, pivo, counter);
         //cout << "Registro: " << numRegistro << endl;
         numRegistro++;
 
     }
-    //cout << "Pivô: " << pivo << "\n";
+    cont++;
+    cout << cont << ". " << pivo << "\n";
     file.close();
 
 
@@ -101,16 +103,57 @@ IndexList* Reader::mountInvertedList()
     int sizeIndex, sizeRegister;
 
     file >> sizeIndex;
+    cout << "Size Index: " << sizeIndex << endl;
 
     for (int i = 0; i < sizeIndex; i++) {
         file >> index >> qtdeIndex;
         RegisterList *registerList = new RegisterList();
+        cout << index << endl;
         indexKeys->push_back(index, registerList);
-        for (int j = 0; j < sizeRegister; j++) {
+        for (int j = 0; j < qtdeIndex; j++) {
             file >> register_ >> qtdeRegister;
             registerList->push_back_register(register_, qtdeRegister);
         }
     }
 
     return indexKeys;
+}
+
+void Reader::searchInvertedFile()
+{
+    fstream file;
+    int size;
+    string word, index;
+    cout << "Qual palavra deseja buscar?\n";
+    cin >> index;
+    file.open("invertedList.dat");
+    bool teste = false;
+
+    file >> size;
+    int i = 0;
+    while (teste == false && i < size) {
+        file >> word;
+        //cout << "Word: " << word << endl;
+        if (word == index)
+            teste = true;
+        else
+            getline(file, word);
+        i++;
+    }
+
+    if (i == size) {
+        cout << "\nDesculpe, esse índice nao consta em nossos servidores... \nBusque por outra palavra.\n";
+    } else {
+
+        int qtdeRegister;
+        file >> qtdeRegister;
+        int register_, qtde;
+        for (int j = 0; j < qtdeRegister; j++) {
+            file >> register_ >> qtde;
+            cout << "Register: " << register_ << " Qtde: " << qtde;
+        }
+    }
+
+    file.close();
+
 }

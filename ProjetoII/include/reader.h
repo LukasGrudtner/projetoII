@@ -16,11 +16,13 @@ class Reader
         void insertSecondaryKeys();
         void insertRegisters(string pivo);
         IndexList* mountInvertedList();
+        void searchInvertedFile();
 
     protected:
 
     private:
         SecondaryIndexing* secondIndex;
+        unsigned long cont;
 };
 
 #endif // READER_H
