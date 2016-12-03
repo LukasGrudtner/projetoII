@@ -4,6 +4,7 @@
 #include "secondary_indexing.h"
 #include "reader.h"
 #include "writer.h"
+#include "search_engine.h"
 #include <iostream>
 
 
@@ -13,6 +14,7 @@ class Control
         Control();
         virtual ~Control();
         void Menu();
+        void menuAvancado();
 
     protected:
 
@@ -21,6 +23,7 @@ class Control
         Reader* reader;
         Writer *writer;
         IndexList *index;
+        SearchEngine *searchEngine;
 };
 
 #endif // CONTROL_H

@@ -3,7 +3,6 @@
 Writer::Writer(IndexList *indexList_)
 {
     indexList = indexList_;
-    writeList();
 }
 
 Writer::~Writer()

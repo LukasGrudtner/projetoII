@@ -16,8 +16,6 @@ class Reader
         void insertSecondaryKeys();
         void insertRegisters(string pivo);
         IndexList* mountInvertedList();
-        void searchInvertedFile();
-        void conjunctiveSearch();
 
     protected:
 

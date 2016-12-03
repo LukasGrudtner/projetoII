@@ -29,13 +29,14 @@
 1479590989 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/node.cpp
 	"node.h"
 
-1480801566 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/control.cpp
+1480805126 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/control.cpp
 	"control.h"
 
-1480794560 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/control.h
+1480803442 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/control.h
 	"secondary_indexing.h"
 	"reader.h"
 	"writer.h"
+	"search_engine.h"
 	<iostream>
 
 1480801310 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/secondary_indexing.cpp
@@ -46,14 +47,14 @@
 	"register_list.h"
 	<iostream>
 
-1480794536 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/reader.h
+1480803392 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/reader.h
 	<string.h>
 	<fstream>
 	<iostream>
 	<stdio.h>
 	"secondary_indexing.h"
 
-1480801441 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/reader.cpp
+1480803912 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/reader.cpp
 	"reader.h"
 	<stdio.h>
 	<string.h>
@@ -89,6 +90,15 @@
 	"index_list.h"
 	"register_list.h"
 
-1480801379 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/writer.cpp
+1480802571 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/writer.cpp
 	"writer.h"
+
+1480803595 /home/lukasgrudtner/Git/projetoII/ProjetoII/include/search_engine.h
+	<string>
+	<fstream>
+	<iostream>
+	"register_list.h"
+
+1480805108 source:/home/lukasgrudtner/Git/projetoII/ProjetoII/src/search_engine.cpp
+	"search_engine.h"
 
