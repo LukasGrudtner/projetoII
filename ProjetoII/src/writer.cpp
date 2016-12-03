@@ -28,7 +28,7 @@ void Writer::writeList()
         file << '\n' << data << ' ' << tamanhoRegisterList << ' ';
         for (int i = 0; i < tamanhoRegisterList; ++i) {
             int writeQtde = registerList->getWriteQtde();
-            int regist = registerList->getWriteData();
+            string regist = registerList->getWriteData();
             file << regist << ' ' << writeQtde << ' ';
         }
     }

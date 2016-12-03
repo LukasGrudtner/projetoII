@@ -21,7 +21,7 @@ void RegisterList::clear()
     }
 }
 
-void RegisterList::push_back_register(const int& data, size_t quantidade_)
+void RegisterList::push_back_register(const string& data, size_t quantidade_)
 {
     Node* atual;
     Node* novo;
@@ -51,7 +51,7 @@ void RegisterList::push_back_register(const int& data, size_t quantidade_)
     //}
 }
 
-void RegisterList::push_front(const int& data)
+void RegisterList::push_front(const string& data)
 {
     Node* novo;
     novo = new Node(data);
@@ -72,7 +72,7 @@ void RegisterList::push_front(const int& data)
     }
 }
 
-void RegisterList::insert(const int& data, std::size_t index)
+void RegisterList::insert(const string& data, std::size_t index)
 {
     Node *novo;
     Node *anterior;
@@ -105,7 +105,7 @@ void RegisterList::insert(const int& data, std::size_t index)
     }
 }
 
-int& RegisterList::at(std::size_t index)
+string& RegisterList::at(std::size_t index)
 {
     Node* anterior = head;
 
@@ -127,11 +127,11 @@ int& RegisterList::at(std::size_t index)
     }
 }
 
-int RegisterList::pop(std::size_t index)
+string RegisterList::pop(std::size_t index)
 {
     Node *atual;
     Node *eliminar;
-    int volta = 0;
+    string volta = 0;
 
     if (index < 0 || index > size_ -1) {
         throw std::out_of_range("Erro Posição!");
@@ -161,7 +161,7 @@ int RegisterList::pop(std::size_t index)
     return volta;
 }
 
-int RegisterList::pop_back()
+string RegisterList::pop_back()
 {
     if (empty()) {
         throw std::out_of_range("Erro Lista Vazia!");
@@ -169,10 +169,10 @@ int RegisterList::pop_back()
     return pop(size()-1);
 }
 
-int RegisterList::pop_front()
+string RegisterList::pop_front()
 {
     Node* saiu;
-    int volta;
+    string volta;
 
     if (empty()) {
         throw std::out_of_range("Erro Lista Vazia!");
@@ -188,7 +188,7 @@ int RegisterList::pop_front()
     }
 }
 
-void RegisterList::remove(const int& data)
+void RegisterList::remove(const string& data)
 {
     Node *atual = head->next();
     Node *anterior = head;
@@ -199,7 +199,7 @@ void RegisterList::remove(const int& data)
     }
 
     anterior->next(atual->next());
-    delete(atual);
+    delete atual;
     size_--;
 }
 
@@ -208,7 +208,7 @@ bool RegisterList::empty() const
     return (size_ == 0);
 }
 
-bool RegisterList::contains(const int& data) const
+bool RegisterList::contains(const string& data) const
 {
     Node *anterior = head;
 
@@ -227,7 +227,7 @@ std::size_t RegisterList::size() const
     return size_;
 }
 
-std::size_t RegisterList::getQuantidadeNode(const int& data) const
+std::size_t RegisterList::getQuantidadeNode(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -239,7 +239,7 @@ std::size_t RegisterList::getQuantidadeNode(const int& data) const
     return anterior->getQuantidade();
 }
 
-void RegisterList::incQuantidadeNode(const int& data)
+void RegisterList::incQuantidadeNode(const string& data)
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -261,7 +261,7 @@ void RegisterList::printaTodosOsElementos()
     }
 }
 
-int RegisterList::getWriteData()
+string RegisterList::getWriteData()
 {
     return write->data();
 }

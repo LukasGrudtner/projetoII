@@ -27,7 +27,7 @@ RegisterList* SecondaryIndexing::findIndexKey(string name)
     return indexKeys->find(name);
 }
 
-void SecondaryIndexing::addRegister(int data, string indexKey, std::size_t quantidade_)
+void SecondaryIndexing::addRegister(string data, string indexKey, std::size_t quantidade_)
 {
     indexKeys->find(indexKey)->push_back_register(data, quantidade_);
 }

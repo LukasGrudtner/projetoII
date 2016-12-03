@@ -8,7 +8,7 @@
 class SecondaryIndexing
 {
     public:
-        SecondaryIndexing(IndexList* index);
+        SecondaryIndexing(IndexList *index);
         virtual ~SecondaryIndexing();
 
         // Adiciona chaves com o paramatro nome, e cria um endereço de registro para essa chave
@@ -19,7 +19,7 @@ class SecondaryIndexing
         RegisterList* findIndexKey(string name);
 
         // Adiciona um registro
-        void addRegister(int data, string indexKey, std::size_t quantidade_);
+        void addRegister(string data, string indexKey, std::size_t quantidade_);
 
         // Verifica se a chave já foi adicionada
         bool verificaExistenciaDeChave(string word);
@@ -29,7 +29,7 @@ class SecondaryIndexing
     protected:
 
     private:
-        IndexList* indexKeys;
+        IndexList *indexKeys;
 };
 
 #endif // SECONDARYINDEXING_H

@@ -12,7 +12,7 @@ IndexList::IndexList()
 IndexList::~IndexList()
 {
     clear();
-    delete(head);
+    delete head;
 }
 
 void IndexList::clear()

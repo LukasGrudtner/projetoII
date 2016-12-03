@@ -1,5 +1,4 @@
 #include <iostream>
-#include "linked_list.h"
 #include "secondary_indexing.h"
 #include "control.h"
 

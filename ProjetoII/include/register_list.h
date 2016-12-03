@@ -13,21 +13,21 @@ class RegisterList
         RegisterList();
         virtual ~RegisterList();
         void clear();
-        void push_back_register(const int& data, std::size_t quantidade_);
-        void push_front(const int& data);
-        void insert(const int& data, std::size_t index);
-        int& at(std::size_t index);
-        int pop(std::size_t index);
-        int pop_back();
-        int pop_front();
-        void remove(const int& data);
+        void push_back_register(const string& data, std::size_t quantidade_);
+        void push_front(const string& data);
+        void insert(const string& data, std::size_t index);
+        string& at(std::size_t index);
+        string pop(std::size_t index);
+        string pop_back();
+        string pop_front();
+        void remove(const string& data);
         bool empty() const;
-        bool contains(const int& data) const;
-        std::size_t getQuantidadeNode(const int& data) const;
-        void incQuantidadeNode(const int& data);
-        void setQuantidadeNode(const int& data);
+        bool contains(const string& data) const;
+        std::size_t getQuantidadeNode(const string& data) const;
+        void incQuantidadeNode(const string& data);
+        void setQuantidadeNode(const string& data);
         std::size_t size() const;
-        int getWriteData();
+        string getWriteData();
         std::size_t getWriteQtde();
         void printaTodosOsElementos();
 
@@ -43,7 +43,7 @@ class RegisterList
             */
             Node(){};
 
-            Node(const int& data):
+            Node(const string& data):
                 data_{data}
             {}
 
@@ -51,7 +51,7 @@ class RegisterList
             /*! Método getter de um Node.
                 /return o dado do elemento.
             */
-            int& data() {
+            string& data() {
                 return data_;
             }
 
@@ -59,7 +59,7 @@ class RegisterList
             /*! Método getter de um Node, onde o dado retornado não será alterado.
                 /return o dado do elemento.
             */
-            const int& data() const {
+            const string& data() const {
                 return data_;
             }
 
@@ -97,12 +97,11 @@ class RegisterList
 
             std::size_t getQuantidade() {
                 return quantidade_;
-                cout << "Get Quantidade: " << quantidade_ << endl;
             }
             std::size_t quantidade_ = 0;
 
          private:
-            int data_; /**< Declaração do dado, do tipo T. */
+            string data_; /**< Declaração do dado, do tipo T. */
             Node* next_{nullptr}; /**< Declaração do ponteiro para o próximo Node. */
     };
 

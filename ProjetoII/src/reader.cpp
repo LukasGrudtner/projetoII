@@ -11,7 +11,7 @@
 Reader::Reader(SecondaryIndexing* indiceSecundario)
 {
     secondIndex = indiceSecundario;
-    //insertSecondaryKeys();
+    //insertSecondaryKeys(); // (ativar para escrever a lista invertida)
 }
 
 Reader::~Reader()
@@ -79,7 +79,7 @@ void Reader::insertRegisters(string pivo)
         }
 
         if (counter > 0)
-            secondIndex->addRegister(numRegistro, pivo, counter);
+            secondIndex->addRegister(name, pivo, counter);
         //cout << "Registro: " << numRegistro << endl;
         numRegistro++;
 
@@ -96,7 +96,7 @@ IndexList* Reader::mountInvertedList()
     IndexList *indexKeys = new IndexList();
     string index;
     size_t qtdeIndex, qtdeRegister;
-    int register_;
+    string register_;
     ifstream file;
     file.open("invertedList.dat");
 
@@ -146,10 +146,11 @@ void Reader::searchInvertedFile()
 
         int qtdeRegister;
         file >> qtdeRegister;
-        int register_, qtde;
+        string register_;
+        int qtde;
         for (int j = 0; j < qtdeRegister; j++) {
             file >> register_ >> qtde;
-            cout << "Register: " << register_ << " Qtde: " << qtde;
+            cout << "Register: " << register_ << " Qtde: " << qtde << endl;
         }
     }
 
@@ -188,7 +189,7 @@ void Reader::conjunctiveSearch()
     } else {
         int qtdeRegister;
         file >> qtdeRegister;
-        int register1;
+        string register1;
         size_t qtde1;
         for (int j = 0; j < qtdeRegister; j++) {
             file >> register1 >> qtde1;
@@ -215,7 +216,8 @@ void Reader::conjunctiveSearch()
     } else {
         int qtdeRegister;
         file >> qtdeRegister;
-        int register2, qtde2;
+        string register2;
+        int qtde2;
         for (int j = 0; j < qtdeRegister; j++) {
             file >> register2 >> qtde2;
             lista2->push_back_register(register2, qtde2);
@@ -224,7 +226,7 @@ void Reader::conjunctiveSearch()
     /* #################################### */
     file.close();
 
-    int registroProcurado;
+    string registroProcurado;
 
     for (int i = 0; i < lista1->size(); i++) {
         registroProcurado = lista1->at(i);

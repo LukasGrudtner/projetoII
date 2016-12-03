@@ -6,9 +6,10 @@ Control::Control()
     secondIndex = new SecondaryIndexing(index);
     reader = new Reader(secondIndex);
     //secondIndex->mostraChaves();
-    //writer = new Writer(index);
+    //writer = new Writer(index); // (ativar para escrever a lista invertida)
 
     Menu();
+
     //index = reader->mountInvertedList();
     //reader->searchInvertedFile();
 
