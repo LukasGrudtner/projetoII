@@ -239,7 +239,7 @@ void Reader::searchSecondaryKeys(int argc, char *argv[])
             f >> word;
             word = removePuntuaction(word);
             if (selectWord(word)) {
-                cout << word << endl;
+                cout << "Procurando Chaves: " << counter << "\n";
                 output << word << std::endl;
                 counter++;
             }
@@ -263,6 +263,7 @@ void Reader::createRegisters(int argc, char *argv[])
     manpage.open("dados/manpage.dat");
 
     for (int i = 1; i < argc; i++) {
+        cout << "Criando Registros: " << i-1 << "\n";
         struct manpages registro;
         g.open(argv[i]);
 
@@ -326,14 +327,14 @@ void Reader::removeRepeatedWords(int argc, char *argv[])
         if (!list->contains(word)) {
             list->push_back(word);
             cont++;
+            cout << "Inserindo na Lista: " << list->size() << "\n";
         }
     }
 
     int size = list->size();
     for (int i = 0; i < size; i++) {
-        string m = list->pop_front();
-        output << m << endl;
-        cout << m << endl;
+        output << list->pop_front() << endl;
+        cout << "Inserindo no Arquivo: " << list->size() << "\n";
     }
 
     input.close();
