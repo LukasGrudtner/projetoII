@@ -5,7 +5,7 @@
 		<Option title="ProjetoII" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="structures/;control/;index/;" />
+		<Option virtualFolders="structures/;control/;index/;model/;" />
 		<Build>
 			<Target title="Debug">
 				<Option output="bin/Debug/ProjetoII" prefix_auto="1" extension_auto="1" />
@@ -45,16 +45,19 @@
 			<Option virtualFolder="structures/" />
 		</Unit>
 		<Unit filename="include/reader.h">
-			<Option virtualFolder="control/" />
+			<Option virtualFolder="model/" />
 		</Unit>
 		<Unit filename="include/register_list.h">
 			<Option virtualFolder="structures/" />
+		</Unit>
+		<Unit filename="include/search_engine.h">
+			<Option virtualFolder="model/" />
 		</Unit>
 		<Unit filename="include/secondary_indexing.h">
 			<Option virtualFolder="index/" />
 		</Unit>
 		<Unit filename="include/writer.h">
-			<Option virtualFolder="control/" />
+			<Option virtualFolder="model/" />
 		</Unit>
 		<Unit filename="main.cpp" />
 		<Unit filename="src/control.cpp">
@@ -67,16 +70,19 @@
 			<Option virtualFolder="structures/" />
 		</Unit>
 		<Unit filename="src/reader.cpp">
-			<Option virtualFolder="control/" />
+			<Option virtualFolder="model/" />
 		</Unit>
 		<Unit filename="src/register_list.cpp">
 			<Option virtualFolder="structures/" />
+		</Unit>
+		<Unit filename="src/search_engine.cpp">
+			<Option virtualFolder="model/" />
 		</Unit>
 		<Unit filename="src/secondary_indexing.cpp">
 			<Option virtualFolder="index/" />
 		</Unit>
 		<Unit filename="src/writer.cpp">
-			<Option virtualFolder="control/" />
+			<Option virtualFolder="model/" />
 		</Unit>
 		<Extensions>
 			<code_completion />
