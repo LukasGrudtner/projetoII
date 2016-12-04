@@ -2,9 +2,13 @@
 
 Control::Control(int argc, char *argv[])
 {
+    tree = new BinaryTree();
+    primaryIndex = new PrimaryIndexing(tree);
+
     index = new IndexList();
     secondIndex = new SecondaryIndexing(index);
-    reader = new Reader(secondIndex);
+
+    reader = new Reader(primaryIndex, secondIndex);
     //secondIndex->mostraChaves();
     //writer = new Writer(index); // (ativar para escrever a lista invertida)
 
@@ -65,7 +69,8 @@ void Control::advancedMenu(int argc, char *argv[])
              << "\nO que você deseja fazer?\n\n"
              << "1. Criar o arquivo MANPAGES (contendo todas as MANPAGES).\n"
              << "2. Iniciar a construção do Arquivo Invertido.\n"
-             << "3. Voltar para o Menu Inicial.\n\n"
+             << "3. Iniciar a construção da Árvore Binária.\n"
+             << "4. Voltar para o Menu Inicial.\n\n"
              << "==============================================================\n";
         cin >> answer;
 
@@ -82,5 +87,9 @@ void Control::advancedMenu(int argc, char *argv[])
             writer->writeList();
         }
 
-    } while (answer != 3);
+        if (answer == 3) {
+            reader->insertPrimaryKeys(argc, argv);
+        }
+
+    } while (answer != 4);
 }

@@ -7,14 +7,38 @@
 #define LONGER_NAME 52
 #define LARGER_FILE 139715
 
-Reader::Reader(SecondaryIndexing* indiceSecundario)
+Reader::Reader(PrimaryIndexing *indicePrimario, SecondaryIndexing *indiceSecundario)
 {
+    primaryIndex = indicePrimario;
     secondIndex = indiceSecundario;
 }
 
 Reader::~Reader()
 {
     //dtor
+}
+
+/* Incompleto: Falta inserir os conteúdos das manpages na árvore, que também
+está imcompleta. */
+void Reader::insertPrimaryKeys(int argc, char *argv[])
+{
+    ifstream file;
+    struct manpage {
+        char name[LONGER_NAME];
+        char contents[LARGER_FILE];
+    };
+    struct manpage registro;
+
+    file.open("dados/manpage.dat");
+
+    for (int i = 1; i < argc; i++) {
+        file.read((char *) &registro, sizeof(struct manpage));
+
+        cout << i << ". Inserindo na árvore: " << argv[i] << endl;
+        // cout << i << ". Contents: " << registro.contents << endl;
+
+        primaryIndex->addIndexKey(argv[i], registro.contents);
+    }
 }
 
 void Reader::insertSecondaryKeys()

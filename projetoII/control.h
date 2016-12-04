@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#include "primary_indexing.h"
+#include "binary_tree.h"
 #include "secondary_indexing.h"
 #include "reader.h"
 #include "writer.h"
@@ -19,11 +21,16 @@ class Control
     protected:
 
     private:
+        PrimaryIndexing *primaryIndex;
+        BinaryTree *tree;
+
         SecondaryIndexing* secondIndex;
+        IndexList *index;
+
+        SearchEngine *searchEngine;
+
         Reader* reader;
         Writer *writer;
-        IndexList *index;
-        SearchEngine *searchEngine;
 };
 
 #endif // CONTROL_H

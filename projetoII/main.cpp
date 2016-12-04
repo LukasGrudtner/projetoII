@@ -6,6 +6,14 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
+    string a = "c", b = "abcdefghij";
+    if (a > b)
+        cout << "sim" << endl;
+    else
+        cout << "não" << endl;
+
+
+
     Control* control = new Control(argc, argv);
     delete control;
 

@@ -7,13 +7,15 @@
 #include <stdio.h>
 
 #include "linked_list.h"
+#include "primary_indexing.h"
 #include "secondary_indexing.h"
 
 class Reader
 {
     public:
-        Reader(SecondaryIndexing* indiceSecundario);
+        Reader(PrimaryIndexing *indicePrimario, SecondaryIndexing* indiceSecundario);
         virtual ~Reader();
+        void insertPrimaryKeys(int argc, char *argv[]);
         void insertSecondaryKeys();
         void insertRegisters(string pivo);
         IndexList* mountInvertedList();
@@ -38,7 +40,8 @@ class Reader
     protected:
 
     private:
-        SecondaryIndexing* secondIndex;
+        PrimaryIndexing *primaryIndex;
+        SecondaryIndexing *secondIndex;
         unsigned long cont;
 };
 
