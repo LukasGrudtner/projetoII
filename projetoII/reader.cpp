@@ -19,8 +19,6 @@ Reader::~Reader()
     //dtor
 }
 
-/* Incompleto: Falta inserir os conteúdos das manpages na árvore, que também
-está incompleta. */
 void Reader::insertPrimaryKeys(int argc, char *argv[])
 {
     ifstream file;
@@ -51,7 +49,7 @@ void Reader::insertSecondaryKeys()
         getline(file, word);
         if (word[0] != '\0') {
             if (secondIndex->addIndexKey(word)) {
-                insertRegisters(word);
+                insertRegisterAdresses(word);
             }
         }
     }
@@ -59,7 +57,7 @@ void Reader::insertSecondaryKeys()
     file.close();
 }
 
-void Reader::insertRegisters(string pivo)
+void Reader::insertRegisterAdresses(string pivo)
 {
     ifstream file;
     file.open("dados/manpage.dat");
@@ -103,7 +101,7 @@ void Reader::insertRegisters(string pivo)
         }
 
         if (counter > 0)
-            secondIndex->addRegister(name, pivo, counter);
+            secondIndex->addRecordAdress(name, pivo, counter);
         numRegistro++;
 
     }
@@ -114,7 +112,7 @@ void Reader::insertRegisters(string pivo)
 
 }
 
-IndexList* Reader::mountInvertedList()
+IndexList* Reader::loadInvertedList()
 {
     IndexList *indexKeys = new IndexList();
     string index;
@@ -129,12 +127,12 @@ IndexList* Reader::mountInvertedList()
 
     for (int i = 0; i < sizeIndex; i++) {
         file >> index >> qtdeIndex;
-        RegisterList *registerList = new RegisterList();
+        RecordAdressesList *recordAdressesList = new RecordAdressesList();
         cout << index << endl;
-        indexKeys->push_back(index, registerList);
+        indexKeys->push_back(index, recordAdressesList);
         for (int j = 0; j < qtdeIndex; j++) {
             file >> register_ >> qtdeRegister;
-            registerList->push_back_register(register_, qtdeRegister);
+            recordAdressesList->push_back_register(register_, qtdeRegister);
         }
     }
 
@@ -176,10 +174,6 @@ int Reader::largerFile(int argc, char* argv[])
 
 bool Reader::selectWord(string word)
 {
-    // if (word.size() == 2) {
-    //     return false;
-    // }
-
     if(word[1] == '\0')
         return false;
     if(word[0] == '{' || word[0] == '}')

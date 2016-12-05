@@ -13,7 +13,6 @@ class LinkedList
         virtual ~LinkedList();
         void clear();
         void push_back(const string& data);
-        void push_back_register(const string& data, std::size_t quantidade_);
         void push_front(const string& data);
         void insert(const string& data, std::size_t index);
         void insert_sorted(const string& data);

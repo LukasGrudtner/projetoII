@@ -10,6 +10,7 @@ PrimaryIndexing::~PrimaryIndexing()
     //dtor
 }
 
+/* Adiciona uma chave (índice) na Árvore. */
 void PrimaryIndexing::addIndexKey(string name, int offset)
 {
     tree->Insert(name, offset);

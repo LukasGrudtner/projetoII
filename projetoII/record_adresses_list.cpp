@@ -1,27 +1,27 @@
-#include "register_list.h"
+#include "record_adresses_list.h"
 #include <iostream>
 
-RegisterList::RegisterList()
+RecordAdressesList::RecordAdressesList()
 {
     size_ = 0;
     head = new Node();
     write = head;
 }
 
-RegisterList::~RegisterList()
+RecordAdressesList::~RecordAdressesList()
 {
     clear();
     delete head;
 }
 
-void RegisterList::clear()
+void RecordAdressesList::clear()
 {
     while (!empty()) {
         pop_front();
     }
 }
 
-void RegisterList::push_back_register(const string& data, size_t quantidade_)
+void RecordAdressesList::push_back_register(const string& data, size_t quantidade_)
 {
     Node* atual;
     Node* novo;
@@ -51,7 +51,7 @@ void RegisterList::push_back_register(const string& data, size_t quantidade_)
     //}
 }
 
-void RegisterList::push_front(const string& data)
+void RecordAdressesList::push_front(const string& data)
 {
     Node* novo;
     novo = new Node(data);
@@ -72,7 +72,7 @@ void RegisterList::push_front(const string& data)
     }
 }
 
-void RegisterList::insert(const string& data, std::size_t index)
+void RecordAdressesList::insert(const string& data, std::size_t index)
 {
     Node *novo;
     Node *anterior;
@@ -105,7 +105,7 @@ void RegisterList::insert(const string& data, std::size_t index)
     }
 }
 
-string& RegisterList::at(std::size_t index)
+string& RecordAdressesList::at(std::size_t index)
 {
     Node* anterior = head;
 
@@ -127,7 +127,7 @@ string& RegisterList::at(std::size_t index)
     }
 }
 
-string RegisterList::pop(std::size_t index)
+string RecordAdressesList::pop(std::size_t index)
 {
     Node *atual;
     Node *eliminar;
@@ -161,7 +161,7 @@ string RegisterList::pop(std::size_t index)
     return volta;
 }
 
-string RegisterList::pop_back()
+string RecordAdressesList::pop_back()
 {
     if (empty()) {
         throw std::out_of_range("Erro Lista Vazia!");
@@ -169,7 +169,7 @@ string RegisterList::pop_back()
     return pop(size()-1);
 }
 
-string RegisterList::pop_front()
+string RecordAdressesList::pop_front()
 {
     Node* saiu;
     string volta;
@@ -188,7 +188,7 @@ string RegisterList::pop_front()
     }
 }
 
-void RegisterList::remove(const string& data)
+void RecordAdressesList::remove(const string& data)
 {
     Node *atual = head->next();
     Node *anterior = head;
@@ -203,12 +203,12 @@ void RegisterList::remove(const string& data)
     size_--;
 }
 
-bool RegisterList::empty() const
+bool RecordAdressesList::empty() const
 {
     return (size_ == 0);
 }
 
-bool RegisterList::contains(const string& data) const
+bool RecordAdressesList::contains(const string& data) const
 {
     Node *anterior = head;
 
@@ -222,12 +222,12 @@ bool RegisterList::contains(const string& data) const
     return false;
 }
 
-std::size_t RegisterList::size() const
+std::size_t RecordAdressesList::size() const
 {
     return size_;
 }
 
-std::size_t RegisterList::getQuantidadeNode(const string& data) const
+std::size_t RecordAdressesList::getQuantidadeNode(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -239,7 +239,7 @@ std::size_t RegisterList::getQuantidadeNode(const string& data) const
     return anterior->getQuantidade();
 }
 
-void RegisterList::incQuantidadeNode(const string& data)
+void RecordAdressesList::incQuantidadeNode(const string& data)
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -251,7 +251,7 @@ void RegisterList::incQuantidadeNode(const string& data)
     anterior->incQuantidade();
 }
 
-void RegisterList::printsAllTheElements()
+void RecordAdressesList::printsAllTheElements()
 {
     Node* atual = head->next();
 
@@ -261,14 +261,13 @@ void RegisterList::printsAllTheElements()
     }
 }
 
-string RegisterList::getWriteData()
+string RecordAdressesList::getWriteData()
 {
     return write->data();
 }
 
-std::size_t RegisterList::getWriteQtde()
+std::size_t RecordAdressesList::getWriteQtde()
 {
     write = write->next();
     return write->quantidade_;
 }
-

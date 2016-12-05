@@ -21,14 +21,14 @@ void Writer::writeList()
 
     for (int j = 0; j < tamanhoIndexList; ++j) {
         string data = indexList->getWriteData();
-        RegisterList* registerList = indexList->find(data);
-        int tamanhoRegisterList = registerList->size();
+        RecordAdressesList* recordAdressesList = indexList->find(data);
+        int tamanhoRecordAdressesList = recordAdressesList->size();
 
-        file << '\n' << data << ' ' << tamanhoRegisterList << ' ';
-        for (int i = 0; i < tamanhoRegisterList; ++i) {
-            int writeQtde = registerList->getWriteQtde();
-            string regist = registerList->getWriteData();
-            file << regist << ' ' << writeQtde << ' ';
+        file << '\n' << data << ' ' << tamanhoRecordAdressesList << ' ';
+        for (int i = 0; i < tamanhoRecordAdressesList; ++i) {
+            int writeQtde = recordAdressesList->getWriteQtde();
+            string recordName = recordAdressesList->getWriteData();
+            file << recordName << ' ' << writeQtde << ' ';
         }
     }
     file.close();

@@ -3,7 +3,7 @@
 
 #include <string>
 #include <stdexcept>
-#include "register_list.h"
+#include "record_adresses_list.h"
 
 using namespace std;
 
@@ -13,12 +13,12 @@ class IndexList
         IndexList();
         virtual ~IndexList();
         void clear();
-        void push_back(const string& data, RegisterList* regAdress);
-        void push_front(const string& data, RegisterList* regAdress);
+        void push_back(const string& data, RecordAdressesList* regAdress);
+        void push_front(const string& data, RecordAdressesList* regAdress);
         void push_front(const string& data);
-        void insert(const string& data, std::size_t index, RegisterList* regAdress);
+        void insert(const string& data, std::size_t index, RecordAdressesList* regAdress);
         void insert(const string& data, std::size_t index);
-        void insert_sorted(const string& data, RegisterList* regAdress);
+        void insert_sorted(const string& data, RecordAdressesList* regAdress);
         string& at(std::size_t index);
         string pop(std::size_t index);
         string pop_back();
@@ -26,7 +26,7 @@ class IndexList
         void remove(const string& data);
         bool empty() const;
         bool contains(const string& data) const;
-        RegisterList* find(const string& data) const;
+        RecordAdressesList* find(const string& data) const;
         std::size_t getQuantidadeNode(const string& data) const;
         void incQuantidadeNode(const string& data);
         std::size_t size() const;
@@ -55,7 +55,7 @@ class IndexList
                 /param data dado a ser inserido no Node.
                 /param next ponteiro para o próximo Node.
             */
-            Node(const string& data, RegisterList* lista):
+            Node(const string& data, RecordAdressesList* lista):
                 data_{data},
                 lista_{lista}
             {}
@@ -108,11 +108,11 @@ class IndexList
                 quantidade_ = quantidade;
             }
 
-            void setLista(RegisterList* list) {
+            void setLista(RecordAdressesList* list) {
                 lista_ = list;
             }
 
-            RegisterList* getLista() {
+            RecordAdressesList* getLista() {
                 return lista_;
             }
 
@@ -123,7 +123,7 @@ class IndexList
          private:
             string data_; /**< Declaração do dado, do tipo T. */
             std::size_t quantidade_ = 0;
-            RegisterList* lista_{nullptr};
+            RecordAdressesList* lista_{nullptr};
             Node* next_{nullptr}; /**< Declaração do ponteiro para o próximo Node. */
     };
 

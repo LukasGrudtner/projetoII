@@ -2,7 +2,7 @@
 
 SecondaryIndexing::SecondaryIndexing(IndexList* index)
 {
-    indexKeys = index;
+    indexList = index;
 }
 
 SecondaryIndexing::~SecondaryIndexing()
@@ -13,35 +13,32 @@ SecondaryIndexing::~SecondaryIndexing()
 bool SecondaryIndexing::addIndexKey(string name)
 {
     if (!checksForKeyExistence(name)) {
-        RegisterList* registerAdress = new RegisterList();
-        indexKeys->push_back(name, registerAdress);
+        RecordAdressesList* registerAdress = new RecordAdressesList();
+        indexList->push_back(name, registerAdress);
         return true;
     } else {
-        indexKeys->incQuantidadeNode(name);
+        indexList->incQuantidadeNode(name);
         return false;
     }
 }
 
-RegisterList* SecondaryIndexing::findIndexKey(string name)
+RecordAdressesList* SecondaryIndexing::findIndexKey(string name)
 {
-    return indexKeys->find(name);
+    return indexList->find(name);
 }
 
-void SecondaryIndexing::addRegister(string data, string indexKey, std::size_t quantidade_)
+void SecondaryIndexing::addRecordAdress(string data, string indexKey, std::size_t quantidade_)
 {
-    indexKeys->find(indexKey)->push_back_register(data, quantidade_);
+    indexList->find(indexKey)->push_back_register(data, quantidade_);
 }
 
 bool SecondaryIndexing::checksForKeyExistence(string word)
 {
-    return indexKeys->contains(word);
+    return indexList->contains(word);
 }
 
 void SecondaryIndexing::showKeys()
 {
-    /* Listar todos os elementos da IndexList, assim como todos os elementos da RegisterList para cada índice */
-
-    indexKeys->printsAllTheElements();
+    /* Listar todos os elementos da IndexList, assim como todos os elementos da RecordAdressesList para cada índice */
+    indexList->printsAllTheElements();
 }
-
-

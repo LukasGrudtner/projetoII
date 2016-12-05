@@ -25,35 +25,6 @@ void LinkedList::push_back(const string& data)
     insert(data, size());
 }
 
-void LinkedList::push_back_register(const string& data, size_t quantidade_)
-{
-    Node* atual;
-    Node* novo;
-
-    if (novo == NULL) {
-        throw std::out_of_range("Erro Lista Cheia!");
-    } else {
-        if(size() == 0) {
-            novo = new Node(data);
-            novo->setQuantidade(quantidade_);
-            head->next(novo);
-            size_++;
-        } else {
-            atual = head->next();
-            while (atual->data() != data && atual->next() != nullptr) {
-                atual = atual->next();
-            }
-            if (atual->data() == data) {
-                atual->setQuantidade(quantidade_);
-            } else {
-                novo = new Node(data);
-                novo->setQuantidade(quantidade_);
-                atual->next(novo);
-            }
-        }
-    }
-}
-
 void LinkedList::push_front(const string& data)
 {
     Node* novo;

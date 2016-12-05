@@ -1,5 +1,5 @@
 #include "index_list.h"
-#include "register_list.h"
+#include "record_adresses_list.h"
 #include <iostream>
 
 IndexList::IndexList()
@@ -22,12 +22,12 @@ void IndexList::clear()
     }
 }
 
-void IndexList::push_back(const string& data, RegisterList* regAdress)
+void IndexList::push_back(const string& data, RecordAdressesList* regAdress)
 {
     insert(data, size(), regAdress);
 }
 
-void IndexList::push_front(const string& data, RegisterList* regAdress)
+void IndexList::push_front(const string& data, RecordAdressesList* regAdress)
 {
     Node* novo;
     novo = new Node(data, regAdress);
@@ -69,7 +69,7 @@ void IndexList::push_front(const string& data)
     }
 }
 
-void IndexList::insert(const string& data, std::size_t index, RegisterList* regAdress)
+void IndexList::insert(const string& data, std::size_t index, RecordAdressesList* regAdress)
 {
     Node *novo;
     Node *anterior;
@@ -135,7 +135,7 @@ void IndexList::insert(const string& data, std::size_t index)
     }
 }
 
-void IndexList::insert_sorted(const string& data, RegisterList* regAdress)
+void IndexList::insert_sorted(const string& data, RecordAdressesList* regAdress)
 {
     Node* atual;
     auto posicao = 0;
@@ -275,7 +275,7 @@ bool IndexList::contains(const string& data) const
     return false;
 }
 
-RegisterList* IndexList::find(const string& data) const
+RecordAdressesList* IndexList::find(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();

@@ -1,5 +1,5 @@
-#ifndef REGISTERLIST_H
-#define REGISTERLIST_H
+#ifndef RECORDADRESSESLIST_H
+#define RECORDADRESSESLIST_H
 
 #include <string>
 #include <stdexcept>
@@ -7,11 +7,11 @@
 
 using namespace std;
 
-class RegisterList
+class RecordAdressesList
 {
     public:
-        RegisterList();
-        virtual ~RegisterList();
+        RecordAdressesList();
+        virtual ~RecordAdressesList();
         void clear();
         void push_back_register(const string& data, std::size_t quantidade_);
         void push_front(const string& data);
@@ -111,5 +111,4 @@ class RegisterList
 
 };
 
-#endif // REGISTERLIST_H
-
+#endif // RECORDADRESSLIST_H

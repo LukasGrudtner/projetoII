@@ -34,7 +34,8 @@ void SearchEngine::primarySearch(string index)
 
     if (!finded) {
         cout << "\n==============================================================\n\n"
-             << "Desculpe, o índice [" << index << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
+             << "Desculpe, o índice [" << index << "] não consta em nossos servidores..."
+             << "\nBusque por outra palavra.\n";
     } else {
         struct manpages registro;
         manpage.open("dados/manpage.dat");
@@ -82,7 +83,8 @@ void SearchEngine::secondarySearch(string index)
 
     if (i == size) {
         cout << "\n==============================================================\n\n"
-             << "Desculpe, o índice [" << index << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
+             << "Desculpe, o índice [" << index << "] não consta em nossos servidores..."
+             << "\nBusque por outra palavra.\n";
     } else {
 
         int qtdeRegister;
@@ -100,9 +102,9 @@ void SearchEngine::secondarySearch(string index)
 
 void SearchEngine::conjunctiveSearch(string index1, string index2)
 {
-    RegisterList* indexList1 = new RegisterList();
-    RegisterList* indexList2 = new RegisterList();
-    RegisterList* searchList = new RegisterList();
+    RecordAdressesList* listIndex1 = new RecordAdressesList();
+    RecordAdressesList* listIndex2 = new RecordAdressesList();
+    RecordAdressesList* searchList = new RecordAdressesList();
     fstream file;
     int size1, size2;
     string word, name1, name2;
@@ -110,7 +112,6 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
 
     file.open("dados/invertedList.dat");
 
-    /* #################################### */
     file >> size1;
     int i = 0;
     while (teste == false && i < size1) {
@@ -125,17 +126,17 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
 
     if (i == size1) {
         cout << "\n==============================================================\n\n"
-             << "Desculpe, o índice [" << index1 << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
+             << "Desculpe, o índice [" << index1 << "] não consta em nossos servidores..."
+             << "\nBusque por outra palavra.\n";
     } else {
         int qtdeRegister;
         file >> qtdeRegister;
         size_t qtde1;
         for (int j = 0; j < qtdeRegister; j++) {
             file >> name1 >> qtde1;
-            indexList1->push_back_register(name1, qtde1);
+            listIndex1->push_back_register(name1, qtde1);
         }
     }
-    /* #################################### */
 
     file.seekg(0, file.beg);
     teste = false;
@@ -152,32 +153,33 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
 
     if (k == size2) {
         cout << "\n==============================================================\n\n"
-             << "Desculpe, o índice [" << index2 << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
+             << "Desculpe, o índice [" << index2 << "] não consta em nossos servidores..."
+             << "\nBusque por outra palavra.\n";
     } else {
         int qtdeRegister;
         file >> qtdeRegister;
         int qtde2;
         for (int j = 0; j < qtdeRegister; j++) {
             file >> name2 >> qtde2;
-            indexList2->push_back_register(name2, qtde2);
+            listIndex2->push_back_register(name2, qtde2);
         }
     }
-    /* #################################### */
+
     file.close();
 
     string registroProcurado;
 
-    for (int m = 0; m < indexList1->size(); m++) {
-        registroProcurado = indexList1->at(m);
-        for (int n = 0; n < indexList2->size(); n++) {
-            if (registroProcurado == indexList2->at(n)) {
+    for (int m = 0; m < listIndex1->size(); m++) {
+        registroProcurado = listIndex1->at(m);
+        for (int n = 0; n < listIndex2->size(); n++) {
+            if (registroProcurado == listIndex2->at(n)) {
                 searchList->push_back_register(registroProcurado, 0);
             }
         }
     }
 
-    delete indexList1;
-    delete indexList2;
+    delete listIndex1;
+    delete listIndex2;
 
     if (k != size1 && i != size2) {
         cout << "\n========================== REGISTROS =========================\n\n";
