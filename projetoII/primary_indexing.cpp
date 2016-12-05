@@ -1,8 +1,8 @@
 #include "primary_indexing.h"
 
-PrimaryIndexing::PrimaryIndexing(BinaryTree *tree_)
+PrimaryIndexing::PrimaryIndexing()
 {
-    tree = tree_;
+
 }
 
 PrimaryIndexing::~PrimaryIndexing()
@@ -10,8 +10,27 @@ PrimaryIndexing::~PrimaryIndexing()
     //dtor
 }
 
-/* Inserir também o contents de cada manpage */
-void PrimaryIndexing::addIndexKey(string name, string contents)
+void PrimaryIndexing::addIndexKey(string name, int offset)
 {
-    tree->insert(name, contents);
+    tree->Insert(name, offset);
+}
+
+void PrimaryIndexing::initTree()
+{
+    tree = new AvlTree();
+}
+
+void PrimaryIndexing::saveTree()
+{
+    tree->Save("dados/avlTree.dat");
+}
+
+void PrimaryIndexing::loadTree()
+{
+    tree->Load("dados/avlTree.dat");
+}
+
+void PrimaryIndexing::deleteTree()
+{
+    delete tree;
 }

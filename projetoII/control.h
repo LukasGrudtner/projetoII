@@ -4,7 +4,7 @@
 #include <iostream>
 
 #include "primary_indexing.h"
-#include "binary_tree.h"
+#include "avl_tree.h"
 #include "secondary_indexing.h"
 #include "reader.h"
 #include "writer.h"
@@ -22,7 +22,7 @@ class Control
 
     private:
         PrimaryIndexing *primaryIndex;
-        BinaryTree *tree;
+        AvlTree *tree;
 
         SecondaryIndexing* secondIndex;
         IndexList *index;

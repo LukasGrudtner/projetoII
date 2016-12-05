@@ -3,21 +3,25 @@
 
 #include <string>
 
-#include "binary_tree.h"
+#include "avl_tree.h"
 
 using namespace std;
 
 class PrimaryIndexing
 {
     public:
-        PrimaryIndexing(BinaryTree *tree_);
+        PrimaryIndexing();
         virtual ~PrimaryIndexing();
-        void addIndexKey(string name, string contents);
+        void addIndexKey(string name, int offset);
+        void initTree();
+        void saveTree();
+        void loadTree();
+        void deleteTree();
 
     protected:
 
     private:
-        BinaryTree *tree;
+        AvlTree *tree;
 };
 
 #endif // PRIMARYINDEXING_H

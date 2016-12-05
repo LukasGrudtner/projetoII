@@ -14,12 +14,14 @@ class SearchEngine
     public:
         SearchEngine();
         virtual ~SearchEngine();
+        void primarySearch(string index);
         void secondarySearch(string index);
         void conjunctiveSearch(string index1, string index2);
 
     protected:
 
     private:
+        string checksFormat(string word);
 };
 
 #endif // SEARCHENGINE_H

@@ -6,6 +6,7 @@
 
 #define LONGER_NAME 52
 #define LARGER_FILE 139715
+#define OFFSET 139767
 
 Reader::Reader(PrimaryIndexing *indicePrimario, SecondaryIndexing *indiceSecundario)
 {
@@ -19,7 +20,7 @@ Reader::~Reader()
 }
 
 /* Incompleto: Falta inserir os conteúdos das manpages na árvore, que também
-está imcompleta. */
+está incompleta. */
 void Reader::insertPrimaryKeys(int argc, char *argv[])
 {
     ifstream file;
@@ -34,11 +35,11 @@ void Reader::insertPrimaryKeys(int argc, char *argv[])
     for (int i = 1; i < argc; i++) {
         file.read((char *) &registro, sizeof(struct manpage));
 
-        cout << i << ". Inserindo na árvore: " << argv[i] << endl;
-        // cout << i << ". Contents: " << registro.contents << endl;
+        cout << i << ". Inserindo na árvore: " << argv[i] << "\n";
 
-        primaryIndex->addIndexKey(argv[i], registro.contents);
+        primaryIndex->addIndexKey(argv[i], (i-1));
     }
+    cout << "\n";
 }
 
 void Reader::insertSecondaryKeys()
@@ -54,6 +55,7 @@ void Reader::insertSecondaryKeys()
             }
         }
     }
+    cout << "\n";
     file.close();
 }
 
@@ -124,7 +126,6 @@ IndexList* Reader::mountInvertedList()
     int sizeIndex, sizeRegister;
 
     file >> sizeIndex;
-    cout << "Size Index: " << sizeIndex << endl;
 
     for (int i = 0; i < sizeIndex; i++) {
         file >> index >> qtdeIndex;
@@ -255,9 +256,7 @@ void Reader::searchSecondaryKeys(int argc, char *argv[])
 
     for (int i = 1; i < argc; ++i) {
         f.open(argv[i]);
-        cout << argv[i] << endl;
         f>> word;
-        cout << word << endl;
 
         while (!f.eof()) {
             f >> word;
@@ -302,7 +301,6 @@ void Reader::createRegisters(int argc, char *argv[])
         g.close();
         manpage.write((char *) &registro, sizeof(struct manpages));
 
-        /* Gambiarra pura. Deve ter um jeito melhor pra resolver isso. */
         int m = 0;
         while (registro.name[m] != '\0') {
             registro.name[m] = '\0';
@@ -360,6 +358,8 @@ void Reader::removeRepeatedWords(int argc, char *argv[])
         output << list->pop_front() << endl;
         cout << "Inserindo no Arquivo: " << list->size() << "\n";
     }
+
+    cout << "\n";
 
     input.close();
     output.close();

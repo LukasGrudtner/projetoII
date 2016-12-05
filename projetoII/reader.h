@@ -36,6 +36,8 @@ class Reader
         unsigned long numberOfWordsInFile(string source);
         /* Remove as palavras repetidas da lista "bruta" de índices */
         void removeRepeatedWords(int argc, char* argv[]);
+        void print();
+        void saveTree();
 
     protected:
 

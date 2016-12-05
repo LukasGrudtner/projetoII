@@ -10,6 +10,55 @@ SearchEngine::~SearchEngine()
     //dtor
 }
 
+void SearchEngine::primarySearch(string index)
+{
+    ifstream file, manpage;
+    string key;
+    unsigned long value;
+    struct manpages {
+        char name[52];
+        char contents[139715];
+    };
+
+    index = checksFormat(index);
+
+    file.open("dados/avlTree.dat");
+    bool finded = false;
+
+    int i = 0;
+    while (!file.eof() && finded == false) {
+        file >> key >> value;
+        if (key == index)
+            finded = true;
+    }
+
+    if (!finded) {
+        cout << "\n==============================================================\n\n"
+             << "Desculpe, o índice [" << index << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
+    } else {
+        struct manpages registro;
+        manpage.open("dados/manpage.dat");
+        manpage.seekg(value*sizeof(struct manpages), ios_base::beg);
+        manpage.read((char*) &registro, sizeof(struct manpages));
+
+        cout << "\n=========================== " << key << " ==========================\n\n"
+             << registro.contents;
+    }
+}
+
+string SearchEngine::checksFormat(string word)
+{
+    string aux = "    ";
+    for (int i = 4; i > 0; i--) {
+        aux[4-i] = word[word.size()-i];
+    }
+
+    if (aux != ".txt")
+        word = word + ".txt";
+
+    return word;
+}
+
 void SearchEngine::secondarySearch(string index)
 {
     fstream file;
@@ -32,17 +81,17 @@ void SearchEngine::secondarySearch(string index)
     }
 
     if (i == size) {
-        cout << "==============================================================\n"
+        cout << "\n==============================================================\n\n"
              << "Desculpe, o índice [" << index << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
     } else {
 
         int qtdeRegister;
         file >> qtdeRegister;
         int qtde;
-        cout << "===========================REGISTROS==========================\n";
+        cout << "\n========================== REGISTROS =========================\n\n";
         for (int j = 0; j < qtdeRegister; j++) {
             file >> name >> qtde;
-            cout << name << "  " << qtde << endl;
+            cout << name << "  " << qtde << "\n";
         }
     }
 
@@ -75,7 +124,7 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
 
 
     if (i == size1) {
-        cout << "==============================================================\n"
+        cout << "\n==============================================================\n\n"
              << "Desculpe, o índice [" << index1 << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
     } else {
         int qtdeRegister;
@@ -102,7 +151,7 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
     }
 
     if (k == size2) {
-        cout << "==============================================================\n"
+        cout << "\n==============================================================\n\n"
              << "Desculpe, o índice [" << index2 << "] não consta em nossos servidores... \nBusque por outra palavra.\n";
     } else {
         int qtdeRegister;
@@ -130,12 +179,13 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
     delete indexList1;
     delete indexList2;
 
-    if (k != size1 || i != size2) {
-        cout << "===========================REGISTROS==========================\n";
+    if (k != size1 && i != size2) {
+        cout << "\n========================== REGISTROS =========================\n\n";
         for (int k = 0; k < searchList->size(); k++) {
             cout << searchList->at(k) << "\n";
+        }
+        cout << "\n";
     }
-}
     delete searchList;
 
 

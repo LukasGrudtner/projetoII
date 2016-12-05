@@ -2,8 +2,7 @@
 
 Control::Control(int argc, char *argv[])
 {
-    tree = new BinaryTree();
-    primaryIndex = new PrimaryIndexing(tree);
+    primaryIndex = new PrimaryIndexing();
 
     index = new IndexList();
     secondIndex = new SecondaryIndexing(index);
@@ -24,6 +23,7 @@ Control::Control(int argc, char *argv[])
 Control::~Control()
 {
     delete index;
+    delete primaryIndex;
     delete secondIndex;
     delete reader;
 }
@@ -32,13 +32,14 @@ void Control::mainMenu(int argc, char *argv[])
 {
     unsigned answer;
     do {
-        cout << "==============================================================\n"
-             << "O que você deseja fazer?\n\n"
+        cout << "\n==============================================================\n"
+             << "\nO que você deseja fazer?\n\n"
              << "1. Pesquisar um índice secundário.\n"
              << "2. Busca conjuntiva.\n"
-             << "3. Opções avançadas.\n"
-             << "4. Sair.\n"
-             << "==============================================================\n";
+             << "3. Pesquisar um índice primário.\n"
+             << "4. Opções avançadas.\n"
+             << "5. Sair.\n\n"
+             << "==============================================================\n\n";
         cin >> answer;
 
         if (answer == 1) {
@@ -54,11 +55,18 @@ void Control::mainMenu(int argc, char *argv[])
             cin >> index1 >> index2;
             searchEngine->conjunctiveSearch(index1, index2);
         }
-            //reader->conjunctiveSearch();
-        if (answer == 3)
+
+        if (answer == 3) {
+            string index;
+            cout << "Qual manpage deseja buscar?\n\n";
+            cin >> index;
+            searchEngine->primarySearch(index);
+        }
+
+        if (answer == 4)
             advancedMenu(argc, argv);
 
-    } while (answer != 4);
+    } while (answer != 5);
 }
 
 void Control::advancedMenu(int argc, char *argv[])
@@ -69,7 +77,7 @@ void Control::advancedMenu(int argc, char *argv[])
              << "\nO que você deseja fazer?\n\n"
              << "1. Criar o arquivo MANPAGES (contendo todas as MANPAGES).\n"
              << "2. Iniciar a construção do Arquivo Invertido.\n"
-             << "3. Iniciar a construção da Árvore Binária.\n"
+             << "3. Iniciar a construção da Árvore AVL.\n"
              << "4. Voltar para o Menu Inicial.\n\n"
              << "==============================================================\n";
         cin >> answer;
@@ -82,13 +90,16 @@ void Control::advancedMenu(int argc, char *argv[])
 
         if (answer == 2) {
             writer = new Writer(index);
-
             reader->insertSecondaryKeys();
             writer->writeList();
+            delete writer;
         }
 
         if (answer == 3) {
+            primaryIndex->initTree();
             reader->insertPrimaryKeys(argc, argv);
+            primaryIndex->saveTree();
+            primaryIndex->deleteTree();
         }
 
     } while (answer != 4);
