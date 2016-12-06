@@ -6,26 +6,62 @@
 
 using namespace std;
 
+/*  Classe de Lista Encadeada Generalizada. */
 class LinkedList
 {
     public:
+        /*  Construtor */
         LinkedList();
+
+        /*  Destrutor */
         virtual ~LinkedList();
+
+        /*  Limpa a lista, apagando elemento por elemento. */
         void clear();
+
+        /*  Insere um elemento no fim da lista. */
         void push_back(const string& data);
+
+        /*  Insere um elemento no início da lista. */
         void push_front(const string& data);
+
+        /*  Insere um elemento em uma posição informada por parâmetro. */
         void insert(const string& data, std::size_t index);
+
+        /*  Insere um elemento em uma posição ordenada. */
         void insert_sorted(const string& data);
+
+        /*  Retorna o elemento na posição passada por parâmetro. */
         string& at(std::size_t index);
+
+        /*  Remove o elemento na posição passada por parâmetro. */
         string pop(std::size_t index);
+
+        /*  Remove o elemento do fim da lista. */
         string pop_back();
+
+        /*  Remove o elemento do início da lista. */
         string pop_front();
+
+        /*  Remove o elemento cuja dado é igual ao passado por parâmetro. */
         void remove(const string& data);
+
+        /*  Verifica se a lista está vazia. */
         bool empty() const;
+
+        /*  Verifica se o dado passado por parâmetro está contido na lista. */
         bool contains(const string& data) const;
-        string find(const string& data) const;
-        std::size_t getQuantidadeNode(const string& data) const;
-        void incQuantidadeNode(const string& data);
+
+        /*  Retorna a posição do elemento na lista. */
+        std::size_t find(const string& data) const;
+
+        /*  Retorna a quantidade do node com o dado passado por parâmetro. */
+        std::size_t get_amount_node(const string& data) const;
+
+        /*  Incrementa a quantidade do node com o dado passado por parâmetro. */
+        void inc_amount_node(const string& data);
+
+        /*  Retorna o tamanho da lista. */
         std::size_t size() const;
 
     protected:
@@ -84,21 +120,21 @@ class LinkedList
                 next_ = node;
             }
 
-            void incQuantidade() {
-                quantidade_++;
+            void inc_amount() {
+                amount_++;
             }
 
-            void setQuantidade(std::size_t quantidade) {
-                quantidade_ = quantidade;
+            void set_amount(std::size_t amount) {
+                amount_ = amount;
             }
 
-            std::size_t getQuantidade() {
-                return quantidade_;
+            std::size_t get_amount() {
+                return amount_;
             }
 
          private:
             string data_; /**< Declaração do dado, do tipo T. */
-            std::size_t quantidade_ = 0;
+            std::size_t amount_ = 0; /* Quantidade do node. */
             Node* next_{nullptr}; /**< Declaração do ponteiro para o próximo Node. */
     };
 

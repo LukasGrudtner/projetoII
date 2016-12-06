@@ -132,7 +132,7 @@ IndexList* Reader::loadInvertedList()
         indexKeys->push_back(index, recordAdressesList);
         for (int j = 0; j < qtdeIndex; j++) {
             file >> register_ >> qtdeRegister;
-            recordAdressesList->push_back_register(register_, qtdeRegister);
+            recordAdressesList->push_back(register_, qtdeRegister);
         }
     }
 

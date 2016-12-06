@@ -9,78 +9,70 @@
 using namespace std;
 
 
-// Classe �rvore AVL
-//  Fornece m�todos para criar e manipular �rvores AVL.
-//  Trabalha com n�s cuja chave e informa��o s�o do tipo string,
-//  mas a classe poderia ser facilmente adaptada para trabalhar
-//  com templates. Mantida nesta forma para uma maior did�tica.
+/*  Classe Árvore AVL
+    Fornece métodos para criar e manipular Árvores AVL.
+    Trabalha com nós cuja chave é do tipo string, para guardar o Índice
+    Primário, e o valor é do tipo long unsigned, para guardar a posição do
+    registro no arquivo.
+*/
 class AvlTree
 {
-
-	// Classe de desenho para console
-    friend class AsciiTreeView;
-
-
     public:
 
-        // Construtor e destrutor padr�es
+        /* Construtor e destrutor padrões. */
         AvlTree();
         ~AvlTree();
 
-        // Insere uma nova entrada na �rvore, aceitando
-        //   um arranjo chave e valor como par�metros
+        /*  Insere um novo nodo na árvore. */
         void Insert(const string& key, const unsigned long& value);
 
-        // Remove uma entrada da �rvore, aceitando
-        //   um arranjo chave e valor como par�metros
-        //   Retorna falso caso a palavra n�o exista.
+        /*  Remove uma entrada da árvore, aceitando uma string e um valor como
+            parâmetros. Retorna falso caso a palavra não exista.
+        */
         bool Remove(const string& key);
 
-        // Procura um valor na �rvore, aceitando uma  chave como
-        //  par�metro. Se encontrado, o valor ser� armazenado na
-        //  vari�vel value e retornado como refer�ncia. Retorna
-        //  verdadeiro se encontrar o valor, falso caso contr�rio.
+        /*  Procura um valor na árvore, aceitando uma chave como
+            parâmetro. Se encontrado, o valor será armazenado na
+            variável value e retornado como referência. Retorna
+            verdadeiro se encontrar o valor, falso caso contrario.
+        */
         bool Search(const string& key, unsigned long& value);
 
-        // Limpa a �rvore
+        /*  Limpa a Árvore. */
         void Clear();
 
-        // Exibe a �rvore na tela
-        // void Print();
+        /*  Imprime a Árvore na tela. */
         void PrintNodeDetails();
 
-        // Carrega uma �rvore do arquivo, aceitando o caminho do arquivo
-        //  (path) como par�metro. Caso esta n�o exista, retorna NULL
+        /*  Carrega uma Árvore do arquivo, aceitando o caminho do arquivo
+            (path) como parâmetro. Caso esta não exista, retorna NULL.
+        */
         static AvlTree* Load(const char* path);
 
-        // Armazena uma �rvore em arquivo, aceitando o caminho do arquivo
-        //  (path) como par�metro. O arquivo � armazenado em p�s-ordem.
+        /*  Armazena uma Árvore em arquivo, aceitando o caminho do arquivo
+            (path) como parâmetro. O arquivo é armazenado em pós-ordem.
+        */
         bool Save(const char* path);
 
 
     private:
 
-        // Raiz da �rvore
         TreeNode* root;
 
-
-        // Rota��es
+        /*  Rotações. */
         void rotateTwice(TreeNode*& node, Direction dir);
         void rotateOnce (TreeNode*& node, Direction dir);
 
-
-        // Rebalanceamentos
+        /*  Rebalanceamentos. */
         void updateBalance  (TreeNode* tree,  Direction dir);
         void rebalanceInsert(TreeNode*& tree, Direction dir, bool& hChanged);
         void rebalanceRemove(TreeNode*& tree, Direction dir, bool& hChanged);
 
-
-        // Inser��o e remo��o recursivos
+        /*  Inserção e Remoção. */
         void insert(const string& key, const unsigned long& value, TreeNode*& node, bool& hChanged);
         bool remove(const string& key, TreeNode*& node, bool& hChanged);
 
-
-        // M�todos auxiliares
+        /*  Métodos auxiliares. */
         bool save(ofstream& stream, TreeNode* node);
         void printNodeDetails(TreeNode* node);
         inline Direction opposite(Direction dir);

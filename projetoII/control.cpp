@@ -2,13 +2,12 @@
 
 Control::Control(int argc, char *argv[])
 {
-    primaryIndex = new PrimaryIndexing();
+    primaryIndexing = new PrimaryIndexing();
 
     index = new IndexList();
-    secondIndex = new SecondaryIndexing(index);
+    secondaryIndexing = new SecondaryIndexing(index);
 
-    reader = new Reader(primaryIndex, secondIndex);
-
+    reader = new Reader(primaryIndexing, secondaryIndexing);
 
     mainMenu(argc, argv);
 }
@@ -16,8 +15,8 @@ Control::Control(int argc, char *argv[])
 Control::~Control()
 {
     delete index;
-    delete primaryIndex;
-    delete secondIndex;
+    delete primaryIndexing;
+    delete secondaryIndexing;
     delete reader;
 }
 
@@ -92,10 +91,10 @@ void Control::advancedMenu(int argc, char *argv[])
 
         /* Inicia a construção da Árvore AVL. */
         if (answer == 3) {
-            primaryIndex->initTree();
+            primaryIndexing->initTree();
             reader->insertPrimaryKeys(argc, argv);
-            primaryIndex->saveTree();
-            primaryIndex->deleteTree();
+            primaryIndexing->saveTree();
+            primaryIndexing->deleteTree();
         }
 
     } while (answer != 4);

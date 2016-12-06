@@ -10,7 +10,7 @@ LinkedList::LinkedList()
 LinkedList::~LinkedList()
 {
     clear();
-    delete(head);
+    delete head;
 }
 
 void LinkedList::clear()
@@ -36,11 +36,11 @@ void LinkedList::push_front(const string& data)
         if(size() == 0) {
             head->next(novo);
             size_++;
-            novo->incQuantidade();
+            novo->inc_amount();
         } else {
             novo->next(head->next());
             head->next(novo);
-            novo->incQuantidade();
+            novo->inc_amount();
             size_++;
         }
     }
@@ -72,7 +72,7 @@ void LinkedList::insert(const string& data, std::size_t index)
 
                 novo->next(anterior->next());
                 anterior->next(novo);
-                novo->incQuantidade();
+                novo->inc_amount();
                 size_++;
             }
         }
@@ -150,7 +150,7 @@ string LinkedList::pop(std::size_t index)
             }
 
             size_--;
-            delete(eliminar);
+            delete eliminar;
             return volta;
         }
     }
@@ -180,7 +180,7 @@ string LinkedList::pop_front()
             head->next(saiu->next());
         }
         size_--;
-        delete(saiu);
+        delete saiu;
         return volta;
     }
 }
@@ -196,7 +196,7 @@ void LinkedList::remove(const string& data)
     }
 
     anterior->next(atual->next());
-    delete(atual);
+    delete atual;
     size_--;
 }
 
@@ -219,7 +219,7 @@ bool LinkedList::contains(const string& data) const
     return false;
 }
 
-string LinkedList::find(const string& data) const
+std::size_t LinkedList::find(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -230,7 +230,7 @@ string LinkedList::find(const string& data) const
         if (i < size())
             anterior = anterior->next();
     }
-    return anterior->data();
+    return i;
 }
 
 std::size_t LinkedList::size() const
@@ -238,7 +238,7 @@ std::size_t LinkedList::size() const
     return size_;
 }
 
-std::size_t LinkedList::getQuantidadeNode(const string& data) const
+std::size_t LinkedList::get_amount_node(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -247,10 +247,10 @@ std::size_t LinkedList::getQuantidadeNode(const string& data) const
         ++i;
         anterior = anterior->next();
     }
-    return anterior->getQuantidade();
+    return anterior->get_amount();
 }
 
-void LinkedList::incQuantidadeNode(const string& data)
+void LinkedList::inc_amount_node(const string& data)
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -259,5 +259,5 @@ void LinkedList::incQuantidadeNode(const string& data)
         ++i;
         anterior = anterior->next();
     }
-    anterior->incQuantidade();
+    anterior->inc_amount();
 }

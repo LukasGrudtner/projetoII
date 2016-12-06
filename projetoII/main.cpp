@@ -1,6 +1,15 @@
+/*!
+ *  \author Lukas Derner Grüdtner
+ *  \author Luiz Felipe Ribeiro Baroncello
+ *  \version 3.0
+ *  \copyright General Public License version 2
+ *
+ */
+
+#include <iostream>
+
 #include "secondary_indexing.h"
 #include "control.h"
-#include <iostream>
 
 using namespace std;
 

@@ -134,7 +134,7 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
         size_t qtde1;
         for (int j = 0; j < qtdeRegister; j++) {
             file >> name1 >> qtde1;
-            listIndex1->push_back_register(name1, qtde1);
+            listIndex1->push_back(name1, qtde1);
         }
     }
 
@@ -161,7 +161,7 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
         int qtde2;
         for (int j = 0; j < qtdeRegister; j++) {
             file >> name2 >> qtde2;
-            listIndex2->push_back_register(name2, qtde2);
+            listIndex2->push_back(name2, qtde2);
         }
     }
 
@@ -173,7 +173,7 @@ void SearchEngine::conjunctiveSearch(string index1, string index2)
         registroProcurado = listIndex1->at(m);
         for (int n = 0; n < listIndex2->size(); n++) {
             if (registroProcurado == listIndex2->at(n)) {
-                searchList->push_back_register(registroProcurado, 0);
+                searchList->push_back(registroProcurado, 0);
             }
         }
     }

@@ -17,7 +17,7 @@ bool SecondaryIndexing::addIndexKey(string name)
         indexList->push_back(name, registerAdress);
         return true;
     } else {
-        indexList->incQuantidadeNode(name);
+        indexList->inc_amount_node(name);
         return false;
     }
 }
@@ -29,7 +29,7 @@ RecordAdressesList* SecondaryIndexing::findIndexKey(string name)
 
 void SecondaryIndexing::addRecordAdress(string data, string indexKey, std::size_t quantidade_)
 {
-    indexList->find(indexKey)->push_back_register(data, quantidade_);
+    indexList->find(indexKey)->push_back(data, quantidade_);
 }
 
 bool SecondaryIndexing::checksForKeyExistence(string word)

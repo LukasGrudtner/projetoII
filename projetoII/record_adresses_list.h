@@ -7,34 +7,71 @@
 
 using namespace std;
 
+/*  Classe de Lista Encadeada para Lista de Endereços de Registro. */
 class RecordAdressesList
 {
     public:
+        /*  Construtor */
         RecordAdressesList();
+
+        /*  Destrutor */
         virtual ~RecordAdressesList();
+
+        /*  Limpa a lista, apagando elemento por elemento. */
         void clear();
-        void push_back_register(const string& data, std::size_t quantidade_);
+
+        /*  Insere um elemento no fim da lista. */
+        void push_back(const string& data, size_t amount_);
+
+        /*  Insere um elemento no início da lista. */
         void push_front(const string& data);
-        void insert(const string& data, std::size_t index);
-        string& at(std::size_t index);
-        string pop(std::size_t index);
+
+        /*  Insere um elemento em uma posição informada por parâmetro. */
+        void insert(const string& data, size_t index);
+
+        /*  Retorna o elemento na posição passada por parâmetro. */
+        string& at(size_t index);
+
+        /*  Remove o elemento na posição passada por parâmetro. */
+        string pop(size_t index);
+
+        /*  Remove o elemento do fim da lista. */
         string pop_back();
+
+        /*  Remove o elemento do início da lista. */
         string pop_front();
+
+        /*  Remove o elemento cuja dado é igual ao passado por parâmetro. */
         void remove(const string& data);
+
+        /*  Verifica se a lista está vazia. */
         bool empty() const;
+
+        /*  Verifica se o dado passado por parâmetro está contido na lista. */
         bool contains(const string& data) const;
-        std::size_t getQuantidadeNode(const string& data) const;
-        void incQuantidadeNode(const string& data);
-        void setQuantidadeNode(const string& data);
-        std::size_t size() const;
-        string getWriteData();
-        std::size_t getWriteQtde();
+
+        /*  Retorna a quantidade do node com o dado passado por parâmetro. */
+        size_t get_amount_node(const string& data) const;
+
+        /*  Incrementa a quantidade do node com o dado passado por parâmetro. */
+        void inc_amount_node(const string& data);
+
+        /*  Retorna o tamanho da lista. */
+        size_t size() const;
+
+        /*  Retorna o dado do nodo à ser escrito pela classe Writer. */
+        string get_write_data();
+
+        /*  Retorna a quantidade do nodo à ser escrito pela classe Writer. */
+        size_t get_write_amount();
+
+        /*  Imprime todos os elementos da lista. */
         void printsAllTheElements();
 
     protected:
 
     private:
-        class Node { // Elemento
+        class Node {
          public:
 
             //! Construtor
@@ -87,18 +124,18 @@ class RecordAdressesList
                 next_ = node;
             }
 
-            void incQuantidade() {
-                quantidade_++;
+            void inc_amount() {
+                amount_++;
             }
 
-            void setQuantidade(std::size_t quantidade) {
-                quantidade_ = quantidade;
+            void set_amount(size_t amount) {
+                amount_ = amount;
             }
 
-            std::size_t getQuantidade() {
-                return quantidade_;
+            size_t get_amount() {
+                return amount_;
             }
-            std::size_t quantidade_ = 0;
+            size_t amount_ = 0;
 
          private:
             string data_; /**< Declaração do dado, do tipo T. */

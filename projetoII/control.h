@@ -26,11 +26,11 @@ class Control
 
     private:
         /* Variáveis para indexação primária. */
-        PrimaryIndexing *primaryIndex;
+        PrimaryIndexing *primaryIndexing;
         AvlTree *tree;
 
         /* Variáveis para indexação secundária. */
-        SecondaryIndexing* secondIndex;
+        SecondaryIndexing* secondaryIndexing;
         IndexList *index;
 
         /* Classes auxiliares para leitura/escrita nos arquivos. */

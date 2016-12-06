@@ -1,6 +1,7 @@
+#include <iostream>
+
 #include "index_list.h"
 #include "record_adresses_list.h"
-#include <iostream>
 
 IndexList::IndexList()
 {
@@ -38,11 +39,11 @@ void IndexList::push_front(const string& data, RecordAdressesList* regAdress)
         if(size() == 0) {
             head->next(novo);
             size_++;
-            novo->incQuantidade();
+            novo->inc_amount();
         } else {
             novo->next(head->next());
             head->next(novo);
-            novo->incQuantidade();
+            novo->inc_amount();
             size_++;
         }
     }
@@ -58,12 +59,12 @@ void IndexList::push_front(const string& data)
     } else {
         if(size() == 0) {
             head->next(novo);
-            novo->incQuantidade();
+            novo->inc_amount();
             size_++;
         } else {
             novo->next(head->next());
             head->next(novo);
-            novo->incQuantidade();
+            novo->inc_amount();
             size_++;
         }
     }
@@ -95,7 +96,7 @@ void IndexList::insert(const string& data, std::size_t index, RecordAdressesList
 
                 novo->next(anterior->next());
                 anterior->next(novo);
-                novo->incQuantidade();
+                novo->inc_amount();
                 size_++;
             }
         }
@@ -128,7 +129,7 @@ void IndexList::insert(const string& data, std::size_t index)
 
                 novo->next(anterior->next());
                 anterior->next(novo);
-                novo->incQuantidade();
+                novo->inc_amount();
                 size_++;
             }
         }
@@ -206,7 +207,7 @@ string IndexList::pop(std::size_t index)
             }
 
             size_--;
-            delete(eliminar);
+            delete eliminar;
             return volta;
         }
     }
@@ -236,7 +237,7 @@ string IndexList::pop_front()
             head->next(saiu->next());
         }
         size_--;
-        delete(saiu);
+        delete saiu;
         return volta;
     }
 }
@@ -252,7 +253,7 @@ void IndexList::remove(const string& data)
     }
 
     anterior->next(atual->next());
-    delete(atual);
+    delete atual;
     size_--;
 }
 
@@ -286,7 +287,7 @@ RecordAdressesList* IndexList::find(const string& data) const
         if (i < size())
             anterior = anterior->next();
     }
-    return anterior->getLista();
+    return anterior->get_list();
 }
 
 std::size_t IndexList::size() const
@@ -294,7 +295,7 @@ std::size_t IndexList::size() const
     return size_;
 }
 
-std::size_t IndexList::getQuantidadeNode(const string& data) const
+std::size_t IndexList::get_amount_node(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -303,10 +304,10 @@ std::size_t IndexList::getQuantidadeNode(const string& data) const
         ++i;
         anterior = anterior->next();
     }
-    return anterior->getQuantidade();
+    return anterior->get_amount();
 }
 
-void IndexList::incQuantidadeNode(const string& data)
+void IndexList::inc_amount_node(const string& data)
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -315,7 +316,7 @@ void IndexList::incQuantidadeNode(const string& data)
         ++i;
         anterior = anterior->next();
     }
-    anterior->incQuantidade();
+    anterior->inc_amount();
 }
 
 void IndexList::printsAllTheElements()
@@ -323,21 +324,21 @@ void IndexList::printsAllTheElements()
     Node* atual = head->next();
 
     while (atual->next() != nullptr) {
-        cout << "= " << atual->data() << " | " << atual->getQuantidade() << " =" << endl;
-        atual->getLista()->printsAllTheElements();
+        cout << "= " << atual->data() << " | " << atual->get_amount() << " =" << endl;
+        atual->get_list()->printsAllTheElements();
         atual = atual->next();
         cout << endl << endl;
     }
 
 }
 
-string IndexList::getWriteData()
+string IndexList::get_write_data()
 {
     write = write->next();
     return write->data();
 }
 
-std::size_t IndexList::getWriteQtde()
+std::size_t IndexList::get_write_amount()
 {
-    return write->getQuantidade();
+    return write->get_amount();
 }

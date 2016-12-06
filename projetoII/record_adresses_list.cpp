@@ -21,34 +21,30 @@ void RecordAdressesList::clear()
     }
 }
 
-void RecordAdressesList::push_back_register(const string& data, size_t quantidade_)
+void RecordAdressesList::push_back(const string& data, size_t amount_)
 {
     Node* atual;
     Node* novo;
 
-   // if (novo == NULL) {
-    //    throw std::out_of_range("Erro Lista Cheia!");
-    //} else {
-        if(size() == 0) {
-            novo = new Node(data);
-            novo->setQuantidade(quantidade_);
-            head->next(novo);
-            size_++;
-        } else {
-            atual = head->next();
-            while (atual->data() != data && atual->next() != nullptr) {
-                atual = atual->next();
-            }
-            if (atual->data() == data) {
-                atual->setQuantidade(quantidade_);
-            } else {
-                novo = new Node(data);
-                novo->setQuantidade(quantidade_);
-                atual->next(novo);
-                size_++;
-            }
+    if(size() == 0) {
+        novo = new Node(data);
+        novo->set_amount(amount_);
+        head->next(novo);
+        size_++;
+    } else {
+        atual = head->next();
+        while (atual->data() != data && atual->next() != nullptr) {
+            atual = atual->next();
         }
-    //}
+        if (atual->data() == data) {
+            atual->set_amount(amount_);
+        } else {
+            novo = new Node(data);
+            novo->set_amount(amount_);
+            atual->next(novo);
+            size_++;
+        }
+    }
 }
 
 void RecordAdressesList::push_front(const string& data)
@@ -61,18 +57,18 @@ void RecordAdressesList::push_front(const string& data)
     } else {
         if(size() == 0) {
             head->next(novo);
-            novo->incQuantidade();
+            novo->inc_amount();
             size_++;
         } else {
             novo->next(head->next());
             head->next(novo);
-            novo->incQuantidade();
+            novo->inc_amount();
             size_++;
         }
     }
 }
 
-void RecordAdressesList::insert(const string& data, std::size_t index)
+void RecordAdressesList::insert(const string& data, size_t index)
 {
     Node *novo;
     Node *anterior;
@@ -98,14 +94,14 @@ void RecordAdressesList::insert(const string& data, std::size_t index)
 
                 novo->next(anterior->next());
                 anterior->next(novo);
-                novo->incQuantidade();
+                novo->inc_amount();
                 size_++;
             }
         }
     }
 }
 
-string& RecordAdressesList::at(std::size_t index)
+string& RecordAdressesList::at(size_t index)
 {
     Node* anterior = head;
 
@@ -127,7 +123,7 @@ string& RecordAdressesList::at(std::size_t index)
     }
 }
 
-string RecordAdressesList::pop(std::size_t index)
+string RecordAdressesList::pop(size_t index)
 {
     Node *atual;
     Node *eliminar;
@@ -153,7 +149,7 @@ string RecordAdressesList::pop(std::size_t index)
             }
 
             size_--;
-            delete(eliminar);
+            delete eliminar;
             return volta;
         }
     }
@@ -183,7 +179,7 @@ string RecordAdressesList::pop_front()
             head->next(saiu->next());
         }
         size_--;
-        delete(saiu);
+        delete saiu;
         return volta;
     }
 }
@@ -222,12 +218,12 @@ bool RecordAdressesList::contains(const string& data) const
     return false;
 }
 
-std::size_t RecordAdressesList::size() const
+size_t RecordAdressesList::size() const
 {
     return size_;
 }
 
-std::size_t RecordAdressesList::getQuantidadeNode(const string& data) const
+size_t RecordAdressesList::get_amount_node(const string& data) const
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -236,10 +232,10 @@ std::size_t RecordAdressesList::getQuantidadeNode(const string& data) const
         ++i;
         anterior = anterior->next();
     }
-    return anterior->getQuantidade();
+    return anterior->get_amount();
 }
 
-void RecordAdressesList::incQuantidadeNode(const string& data)
+void RecordAdressesList::inc_amount_node(const string& data)
 {
     auto i = 0u;
     Node* anterior = head->next();
@@ -248,7 +244,7 @@ void RecordAdressesList::incQuantidadeNode(const string& data)
         ++i;
         anterior = anterior->next();
     }
-    anterior->incQuantidade();
+    anterior->inc_amount();
 }
 
 void RecordAdressesList::printsAllTheElements()
@@ -256,18 +252,18 @@ void RecordAdressesList::printsAllTheElements()
     Node* atual = head->next();
 
     while (atual->next() != nullptr) {
-        cout << "[" << atual->data() << "]: " << atual->getQuantidade() << " ";
+        cout << "[" << atual->data() << "]: " << atual->get_amount() << " ";
         atual = atual->next();
     }
 }
 
-string RecordAdressesList::getWriteData()
+string RecordAdressesList::get_write_data()
 {
     return write->data();
 }
 
-std::size_t RecordAdressesList::getWriteQtde()
+std::size_t RecordAdressesList::get_write_amount()
 {
     write = write->next();
-    return write->quantidade_;
+    return write->amount_;
 }
