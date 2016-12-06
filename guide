@@ -12,7 +12,7 @@
 	* Busca "conjuntiva" com "duas chaves secundárias", retornando todos os "registros" (MANPAGES) que contenham ambas as chaves
 	  no "conteúdo". Ex.: filename e string.
 
-	### INDEXAÇÃO ###
+	### INDEXAÇÃO ####
 
 3. Manter um "índice primário" em "arquivo separado" e que referência os registros (MANPAGES) por "comando"(nome). Ex.: fseek.
 	* Este índice deve ser uma árvore B.
@@ -36,7 +36,7 @@
 
 	### ENTRADA DE DADOS ###
 
-6. A entrada dos dados deverá ser realizada da seguinte forma: 
+6. A entrada dos dados deverá ser realizada da seguinte forma:
 	* Cada arquivo-texto de uma MANPAGE é lido e armazenado em um "registro", cujo endereço é guardado.
 	* Percorre-se o texto (na memória) palavra a palavra e verifica-se, para cada palavra, se ela se encontra na lista de
 	  palavras-chave.
@@ -58,30 +58,3 @@ size(número de índices)
 índice(dado) quantidade size(número de registros) reg1 qtde(reg) reg2 qtde(reg)
 
 Antes: 891876 Depois: 22505
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
